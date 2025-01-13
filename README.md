@@ -17,7 +17,7 @@ DataWrapper is a utility class that encapsulates a pandas DataFrame. It provides
 
 # Example
 
-```
+```python
 from framework import CSVDataLoader
 
 # Create a CSVDataLoader instance
