@@ -13,3 +13,19 @@ CSVDataLoader is a concrete implementation of the DataLoader class, designed to 
 ## DataWrapper
 
 DataWrapper is a utility class that encapsulates a pandas DataFrame. It provides an interface for managing and analyzing tabular data. The DataWrapper can be initialized with a DataFrame or can load data directly from a CSV file.
+
+
+# Example
+
+```
+from framework import CSVDataLoader
+
+# Create a CSVDataLoader instance
+csv_loader = CSVDataLoader()
+
+# Load data into a DataWrapper
+data_wrapper = csv_loader.load_data('path/to/your/file.csv')
+
+# Access the pandas DataFrame
+print(data_wrapper.data_frame)
+```
