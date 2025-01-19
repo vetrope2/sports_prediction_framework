@@ -1,5 +1,5 @@
 import pandas as pd
-
+from logger import framework_logger
 
 class DataWrapper:
     """
@@ -23,9 +23,9 @@ class DataWrapper:
         try:
             self.data_frame = pd.read_csv(file_path)
         except FileNotFoundError:
-            print(f"Error: File not found at {file_path}")
+            framework_logger.error(f"Error: File not found at {file_path}")
         except Exception as e:
-            print(f"An error occurred: {e}")
+            framework_logger.error(f"An error occurred: {e}")
 
     def get_data(self):
         """

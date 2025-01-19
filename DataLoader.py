@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import csv
 import pandas as pd
 from DataWrapper import DataWrapper
+from logger import framework_logger
 
 class DataLoader(ABC):
     """
@@ -31,10 +32,10 @@ class CSVDataLoader(DataLoader):
             data_frame = pd.read_csv(file_path)
             return DataWrapper(data_frame)
         except FileNotFoundError:
-            print(f"Error: File not found at {file_path}")
+            framework_logger.error(f"Error: File not found at {file_path}")
             return DataWrapper()
         except Exception as e:
-            print(f"An error occurred: {e}")
+            framework_logger.error(f"An error occurred: {e}")
             return DataWrapper()
 
 
