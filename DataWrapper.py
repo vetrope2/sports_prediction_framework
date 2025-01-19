@@ -27,22 +27,15 @@ class DataWrapper:
         except Exception as e:
             print(f"An error occurred: {e}")
 
-    def fix_outliers(self, column_name):
+    def get_data(self):
         """
-        Remove outliers from a specified column using the interquartile range (IQR) method.
-
-        :param column_name: The name of the column to fix outliers in.
+        Returns the data_frame variable.
         """
-        if column_name not in self.data_frame.columns:
-            print(f"Error: Column '{column_name}' not found in the DataFrame.")
-            return
+        return self.data_frame
 
-        Q1 = self.data_frame[column_name].quantile(0.25)
-        Q3 = self.data_frame[column_name].quantile(0.75)
-        IQR = Q3 - Q1
-
-        lower_bound = Q1 - 1.5 * IQR
-        upper_bound = Q3 + 1.5 * IQR
-
-        self.data_frame = self.data_frame[(self.data_frame[column_name] >= lower_bound) &
-                                          (self.data_frame[column_name] <= upper_bound)]
+    def set_data(self, data_frame):
+        """
+        Sets the data_frame variable.
+        :param data_frame:
+        """
+        self.data_frame = data_frame

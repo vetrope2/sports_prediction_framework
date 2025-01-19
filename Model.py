@@ -9,7 +9,7 @@ class Model():
 
     def __init__(self, model: BaseEstimator):
         """
-        Initialize the abstract class with a scikit-learn model.
+        Initialize the class with a scikit-learn model.
 
         :param model: A scikit-learn model instance.
         """
@@ -33,7 +33,7 @@ class Model():
         """
         return self.model.predict(X)
 
-    def train_and_test(self, X, y, test_size=0.2):
+    def train_and_test(self, X, y, test_size=0.2, random_state=42):
         """
         Train the model on the provided data.
 
@@ -41,11 +41,17 @@ class Model():
         :param y: Target values (array-like).
         :param test_size: Which part of the data is used for testing.
         """
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
         self.train(X_train, y_train)
         self.print_score(X_test, y_test)
 
     def print_score(self, X_test, y_test):
-        print(self.model.score(X_test, y_test))
+        """
+        Print the score of the model.
+
+        :param X_test:
+        :param y_test:
+        """
+        print(f"Model accuracy of {self.model.score(X_test, y_test)}")
 
 
