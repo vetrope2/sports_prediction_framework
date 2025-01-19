@@ -40,7 +40,3 @@ class CSVDataLoader(DataLoader):
 
 
 
-# Example usage:
-#csv_loader = CSVDataLoader()
-#data_wrapper = csv_loader.load_data('input_example/closing_odds.csv')
-#print(data_wrapper.data_frame)

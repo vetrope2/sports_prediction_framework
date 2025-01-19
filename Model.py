@@ -8,7 +8,7 @@ class Model():
     A class representing a scikit-learn model.
     """
 
-    def __init__(self, model: BaseEstimator, model_name="model name"):
+    def __init__(self, model: BaseEstimator, model_name="model ntraame"):
         """
         Initialize the class with a scikit-learn model.
 
