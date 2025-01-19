@@ -1,6 +1,20 @@
 # Sports Prediction Framework
 
+## What is not yet finished:
+- Currently the framework supports only one DataLoader operation andthat is from CSV. I will add loading through SQL, API and webscraping.
+- The evaluation and simulation of betting strategies is not yet finished. I will have to study the theoretical concepts first (Kelly Growth etc.).
+- Hyperparameter tuning is not yet implemented for the same reason as the previous.
+- Exporting of reports or visualisation of data is not yet implemented.
+
 # Components
+
+## Model
+
+Model is a class designed to simplify the training and prediction process of
+machine learning models. It provides an easy-to-use interface for training a
+model on a given dataset and making predictions based on new, unseen data.
+The class supports various machine learning algorithms and allows users to
+customize hyperparameters for optimal performance.
 
 ## DataLoader
 
@@ -9,8 +23,6 @@ loading data from various sources. This class is inherited by specialized classe
 that handle data loading from different types of sources such as CSV files, SQL
 databases, APIs, and web scrapers. The DataLoader class ensures consistency
 in how data is loaded.
-
-
 
 ## DataWrapper
 
@@ -37,6 +49,18 @@ experiments, and metrics to MLflow. It provides a simple interface for tracking
 and managing machine learning experiments, enabling better reproducibility,
 performance monitoring, and version control
 
+# Installation
+
+```
+pip install -r requirements.txt
+```
+
+# How to run
+Run mlflow locally and then you are free to use the functions. An example is provided in a Jupyter notebook.
+```cmd
+mlflow ui
+```
+
 # Example
 
 ```python
@@ -46,8 +70,20 @@ from framework import CSVDataLoader
 csv_loader = CSVDataLoader()
 
 # Load data into a DataWrapper
-data_wrapper = csv_loader.load_data('path/to/your/file.csv')
+data = csv_loader.load_data('path/to/your/file.csv')
 
-# Access the pandas DataFrame
-print(data_wrapper.data_frame)
+# Get the home_team column data
+X = DataWrapper(data.get_data()['home_team'])
+# Get the home_score data
+y = data.get_data()['home_score']
+
+dt = DataTransformer()
+# Create dummies for categorical data
+X = dt.create_dummies(X, 'home_team')
+
+# Choose a modul you want
+m = Model(RandomForestClassifier())
+
+# Train and test
+m.train_and_test(X.get_data(),y)
 ```
