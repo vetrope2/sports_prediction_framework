@@ -1,6 +1,7 @@
 import paramiko
 from sshtunnel import SSHTunnelForwarder
 import psycopg2
+from sqlalchemy import create_engine
 from logger import framework_logger
 class Connector:
 
@@ -17,7 +18,6 @@ class Connector:
                 local_bind_address=('127.0.0.1', 5433)  # Local forwarding
             )
             tunnel.start()
-            framework_logger.log("SSH tunnel established!")
 
             # Connect to PostgreSQL through the tunnel
             conn = psycopg2.connect(
@@ -27,8 +27,7 @@ class Connector:
                 user=db_user,
                 password=db_password
             )
-            framework_logger.log("Connected to PostgreSQL successfully!")
+            print("Connected")
             return conn, tunnel
         except Exception as e:
-            framework_logger.log(f"Connection failed: {e}")
             return None, None
