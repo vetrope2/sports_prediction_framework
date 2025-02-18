@@ -41,3 +41,7 @@ class Connector:
 
     def close(self):
         self.tunnel.stop()
+        self.eng.dispose()
+
+    def get_engine(self):
+        return self.eng
