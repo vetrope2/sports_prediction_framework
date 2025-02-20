@@ -10,8 +10,11 @@ c.connect_to_db_via_ssh()
 frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"""
 
 d = DataSource()
-df = d.plain_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;')
+#df = d.plain_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;')
+
+df = d.query( "isdb", "Leagues", lambda c: c.Country == "Australia")
 
 print(df)
+
 
 d.close()

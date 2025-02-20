@@ -3,6 +3,7 @@ from sshtunnel import SSHTunnelForwarder
 import psycopg2
 from dotenv import load_dotenv, dotenv_values
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from logger import framework_logger
 import os
 
@@ -17,6 +18,8 @@ class Connector:
     def connect_to_db(self):
         try:
             self.eng = create_engine(f'postgresql+psycopg2://{self.config["DB_USER"]}:{self.config["DB_PASSWORD"]}@127.0.0.1:5433/{self.config["DB_NAME"]}')
+            session_func = sessionmaker(bind=self.eng)
+            self.session = session_func()
             framework_logger.info("Connected to database")
         except Exception as e:
             framework_logger.error("Connection to database failed.")
