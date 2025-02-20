@@ -36,5 +36,31 @@ class DataSource:
 
         return df
 
+    def query_distinct(self, schema_name, table_name, filter_func, distinct_cols=None) -> pd.DataFrame:
+        """
+        This function executes a SQL query that retrieves distinct rows based on a specific column,
+        while returning all columns from the table.
+
+        WARNING: This query uses PostgreSQL-specific feature `DISTINCT ON`.
+
+        Arguments:
+            schema_name (str): The schema of the table.
+            table_name (str): The name of the table.
+            filter_func (callable): A filter function to apply on the table's columns.
+            distinct_cols (list): List of columns to apply DISTINCT ON.
+        """
+        metadata = MetaData(schema=schema_name)
+
+        table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
+
+        if distinct_cols:
+            query = select(table).distinct(*[table.c[col] for col in distinct_cols]).filter(filter_func(table.c))
+        else:
+            query = select(table).filter(filter_func(table.c))
+
+        df = pd.read_sql(query, self.con.session.bind)
+
+        return df
+
     def close(self):
         self.con.close()
