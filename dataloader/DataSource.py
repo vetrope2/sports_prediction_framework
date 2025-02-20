@@ -30,7 +30,7 @@ class DataSource:
 
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
 
-        query = select(table).filter(filter_func(table.c)).limit(5)
+        query = select(table).filter(filter_func(table.c))
 
         df = pd.read_sql(query, self.con.session.bind)
 
