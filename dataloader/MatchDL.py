@@ -8,7 +8,6 @@ class MatchDL(DataLoader):
         data = self.remove_not_valid_results(data)
         data = self.parse_score_PSQL(data)
         data = self.parse_season_PSQL(data)
-        data = self.parse_date_PSQL(data)
         return data
 
     def parse_isdb(self, data: pd.DataFrame) -> pd.DataFrame:
@@ -31,7 +30,3 @@ class MatchDL(DataLoader):
         data["Season"] = pd.to_numeric(data["Season"].str.split("/").str[0])
         return data
 
-    def parse_date_PSQL(self, data: pd.DataFrame) -> pd.DataFrame:
-        """ NOT IMPLEMENTED"""
-        data[self.dateColumnName] = data["Time"].str.split(" ").str[0]
-        return data
