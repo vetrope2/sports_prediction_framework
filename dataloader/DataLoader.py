@@ -15,6 +15,13 @@ class DataLoader:
         ds.close()
         return df
 
+    @classmethod
+    def preview(cls, schema_name: str, table_name: str, filter_func, distinct_cols=None) -> pd.DataFrame:
+        ds = DataSource()
+        df = ds.preview_query(schema_name, table_name, filter_func)
+        ds.close()
+        return df
+
     def load_and_wrap(self, schema_name, table_name, filter_func):
         ds = DataSource()
         df = ds.query(schema_name, table_name, filter_func)

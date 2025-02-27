@@ -36,6 +36,17 @@ class DataSource:
 
         return df
 
+    def preview_query(self, schema_name, table_name, filter_func) -> pd.DataFrame:
+        metadata = MetaData(schema=schema_name)
+
+        table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
+
+        query = select(table).filter(filter_func(table.c)).limit(5)
+
+        df = pd.read_sql(query, self.con.session.bind)
+
+        return df
+
     def query_distinct(self, schema_name, table_name, filter_func, distinct_cols=None) -> pd.DataFrame:
         """
         This function executes a SQL query that retrieves distinct rows based on a specific column,
