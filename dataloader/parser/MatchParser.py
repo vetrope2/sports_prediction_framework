@@ -1,4 +1,5 @@
 from dataloader.parser.AbstractParser import AbstractParser
+import logger
 import pandas as pd
 import numpy as np
 
@@ -11,12 +12,17 @@ class MatchParser(AbstractParser):
         return data
 
     def parse_isdb(self, data: pd.DataFrame) -> pd.DataFrame:
-        data.loc[data['WDL'] == "W", 'WDL'] = int(1)
-        data.loc[data['WDL'] == "L", 'WDL'] = int(2)
-        data.loc[data['WDL'] == "D", 'WDL'] = int(0)
-        data = data.astype({'WDL': 'int32'})
-        data.rename(columns={'HT': 'Home', 'AT': 'Away', 'GD': 'SD', 'Sea': 'Season', 'Lge': 'League'}, inplace=True)
-        return data
+        try:
+            data.loc[data['WDL'] == "W", 'WDL'] = int(1)
+            data.loc[data['WDL'] == "L", 'WDL'] = int(2)
+            data.loc[data['WDL'] == "D", 'WDL'] = int(0)
+            data = data.astype({'WDL': 'int32'})
+            data.rename(columns={'HT': 'Home', 'AT': 'Away', 'GD': 'SD', 'Sea': 'Season', 'Lge': 'League'}, inplace=True)
+            return data
+        except (KeyError, AttributeError):
+            logger.framework_logger.error("Parsing was not successful")
+            return data
+
 
     def remove_not_valid_results(self, data: pd.DataFrame):
         return data[(data["Result"] != '-') & (data["Result"] != '---')]

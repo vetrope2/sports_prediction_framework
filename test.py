@@ -17,7 +17,7 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 #df = DataLoader.load("isdb", "Leagues", lambda c: True)
 
 sport = SportType.SOCCER
-func = sport.value().parse_isdb()
+func = sport.value().parse_isdb(None)
 
 """df = DataLoader.load("isdb", "Matches", lambda c: c.Lge == "GER1")
 DL = MatchDL()
