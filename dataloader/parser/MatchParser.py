@@ -1,9 +1,9 @@
-from dataloader.DataLoader import DataLoader
+from dataloader.parser.AbstractParser import AbstractParser
 import pandas as pd
 import numpy as np
 
 
-class MatchDL(DataLoader):
+class MatchParser(AbstractParser):
     def parse_flashscore(self, data: pd.DataFrame) -> pd.DataFrame:
         data = self.remove_not_valid_results(data)
         data = self.parse_score_PSQL(data)

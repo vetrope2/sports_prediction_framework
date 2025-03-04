@@ -1,4 +1,6 @@
 from dataloader.Connector import Connector
+from dataloader.parser.SportType import SportType
+from dataloader.parser.AbstractParser import AbstractParser
 import pandas as pd
 from sqlalchemy import MetaData, Table
 from sqlalchemy.orm import sessionmaker
@@ -7,8 +9,14 @@ from sqlalchemy.sql import select
 
 class DataSource:
 
-    def __init__(self, via_ssh=True):
+    def __init__(self,sport_type: SportType = None, via_ssh=True):
         self.con = Connector()
+        self.db_type = self.con.config['DB_NAME']
+
+        if sport_type is not None:
+            self.parser = sport_type.value()
+
+
         if via_ssh:
             self.con.connect_to_db_via_ssh()
         else:
@@ -23,6 +31,14 @@ class DataSource:
         to SQL injection attacks, since the input is not sanitized.
         """
         return pd.read_sql_query(query, con=self.con.get_engine())
+
+    def parse_data(self, df: pd.DataFrame):
+        match self.db_type:
+            case "bet":
+                pass
+            case "flashscore":
+                self.parser.parse_flashscore()
+
 
 
     def query(self, schema_name, table_name, filter_func) -> pd.DataFrame:

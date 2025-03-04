@@ -57,7 +57,7 @@ class DataHandler:
         self.dataframe = self.dataframe.join(data)
 
 
-class Merger:
+class DataMerger:
     @staticmethod
     def merge_data_handlers(self, handlers: [DataHandler]) -> DataHandler:
         merged = handlers[0].copy()

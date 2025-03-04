@@ -1,4 +1,5 @@
 from dataloader.DataLoader import DataLoader
+from dataloader.parser.SportType import SportType
 
 """c = Connector()
 c.connect_to_db_via_ssh()
@@ -15,6 +16,12 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 
 #df = DataLoader.load("isdb", "Leagues", lambda c: True)
 
-df = DataLoader.preview("isdb", "Leagues", lambda c: True)
-print(df)
+sport = SportType.SOCCER
+func = sport.value().parse_isdb()
+
+"""df = DataLoader.load("isdb", "Matches", lambda c: c.Lge == "GER1")
+DL = MatchDL()
+df = DL.parse_isdb(df)
+
+print(df)"""
 

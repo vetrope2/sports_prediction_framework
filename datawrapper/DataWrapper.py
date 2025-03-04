@@ -1,4 +1,4 @@
-from dataloader.SportType.SportType import SportType
+from dataloader.parser.SportType import SportType
 
 class DataWrapper:
     def __init__(self, sport:SportType):
