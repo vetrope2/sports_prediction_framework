@@ -1,9 +1,7 @@
 from dataloader.Connector import Connector
-from dataloader.parser.SportType import SportType
-from dataloader.parser.AbstractParser import AbstractParser
+from datawrapper.SportType import SportType
 import pandas as pd
 from sqlalchemy import MetaData, Table
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import select
 
 
@@ -14,7 +12,7 @@ class DataSource:
         self.db_type = self.con.config['DB_NAME']
 
         if sport_type is not None:
-            self.parser = sport_type.value()
+            self.parser = sport_type.get_parser()()
 
 
         if via_ssh:
@@ -35,9 +33,9 @@ class DataSource:
     def parse_data(self, df: pd.DataFrame):
         match self.db_type:
             case "bet":
-                pass
+                return self.parser.parse_isdb(df)
             case "flashscore":
-                self.parser.parse_flashscore()
+                return self.parser.parse_flashscore(df)
 
 
 
@@ -49,6 +47,8 @@ class DataSource:
         query = select(table).filter(filter_func(table.c))
 
         df = pd.read_sql(query, self.con.session.bind)
+
+        df = self.parse_data(df)
 
         return df
 

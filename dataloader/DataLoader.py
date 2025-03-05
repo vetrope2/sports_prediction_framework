@@ -1,4 +1,7 @@
 from dataloader.DataSource import DataSource
+from datawrapper.DataWrapper import DataWrapper
+from datawrapper.DataHandler import DataHandler
+from datawrapper.SportType import SportType
 import pandas as pd
 class DataLoader:
     @classmethod
@@ -22,11 +25,12 @@ class DataLoader:
         ds.close()
         return df
 
-    def load_and_wrap(self, schema_name, table_name, filter_func):
-        ds = DataSource()
+    @classmethod
+    def load_and_wrap(cls, schema_name, table_name, filter_func, sport: SportType = None):
+        ds = DataSource(sport)
         df = ds.query(schema_name, table_name, filter_func)
+        handler = DataHandler(df)
+        wrapper = sport.get_wrapper()(handler)
         ds.close()
 
-        """ TO BE IMPLEMENTED"""
-
-        return df
+        return wrapper
