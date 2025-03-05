@@ -46,3 +46,6 @@ class DataWrapper:
 
     def get_columns(self, column_names):
         return self.data_handler.get_columns(column_names)
+
+    def set_after_compute_values(self):
+        pass
