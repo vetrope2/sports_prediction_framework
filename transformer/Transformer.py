@@ -11,24 +11,50 @@ class Transformer:
 
 
     def load_from_dict(self,transform_dict: dict):
-        for key, value in transform_dict.keys(), transform_dict.values():
+        """
+        Updates the `transformations` dictionary with key-value pairs from `transform_dict`.
+
+        Args:
+            transform_dict (dict): A dictionary containing transformation keys and their corresponding values.
+        """
+
+        for key, value in transform_dict.items():
             if key in self.transformations.keys():
                 self.transformations[key] = value
             else:
-                print("Invalid param")
+                print(f"Invalid transformation {key}")
+
 
     def load_from_list(self, transform_list: list):
+        """
+        Sets the corresponding entries in the transformations dictionary to True for each element in transform_list.
+
+        Args:
+            transform_list (list): A list of transformation keys to be updated in the transformations dictionary.
+        """
         for elem in transform_list:
             if elem in self.transformations.keys():
                 self.transformations[elem] = True
 
 
     def transform(self, wrapper: DataWrapper):
-        if self.transformations['only_first_odds']:
+        """
+        Applies transformations to the wrapper based on the active flags in the `transformations` dictionary.
+
+        Args:
+            wrapper (DataWrapper): The data wrapper to be transformed.
+
+        Returns:
+            DataWrapper: The transformed data wrapper after applying the selected transformations.
+        """
+        t = self.transformations
+        if t['date_from_time']:
+            wrapper = self.base_transformer.get_date_from_time(wrapper)
+        if t['only_first_odds']:
             wrapper = self.base_transformer.get_first_odds(wrapper)
-        if self.transformations['only_latest_odds']:
+        if t['only_latest_odds']:
             wrapper = self.base_transformer.get_latest_odds(wrapper)
-        if self.transformations['first_and_latest_odds']:
+        if t['first_and_latest_odds']:
             wrapper = self.base_transformer.get_first_and_latest_odds(wrapper)
 
         return wrapper
