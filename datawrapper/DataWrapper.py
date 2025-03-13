@@ -9,6 +9,8 @@ class DataWrapper:
     name_columns = None
     name_id_columns = None
     prediction_columns = None
+    score_columns = None
+    result_column = None
 
     def __init__(self, data_handler: DataHandler, home_advantage=None):
         self.data_handler = data_handler
