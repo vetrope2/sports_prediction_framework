@@ -15,6 +15,7 @@ class DataHandler:
             self.feature_cols = set()
         else:
             self.feature_cols = set(feature_cols)
+
     def get_dataframe(self):
         return self.dataframe
 
@@ -54,6 +55,19 @@ class DataHandler:
 
     def add_columns(self, data):
         self.dataframe = self.dataframe.join(data)
+
+    def copy(self, dataframe: pd.DataFrame = None, feat_cols=None, label_cols=None):
+        if dataframe is None:
+            dataframe = self.dataframe
+
+        if not feat_cols:
+            feat_cols = self.feature_cols
+
+        if not label_cols:
+            label_cols = self.label_cols
+
+        other = DataHandler(dataframe, feature_cols=feat_cols, label_cols=label_cols)
+        return other
 
 
 class DataMerger:

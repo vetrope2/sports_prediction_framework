@@ -51,3 +51,18 @@ class DataWrapper:
 
     def set_after_compute_values(self):
         pass
+
+    def deepcopy(self, dataframe: pd.DataFrame = None, feat_cols=None, label_cols=None):
+        return self.copy(self.data_handler.copy(dataframe, feat_cols, label_cols))
+
+    def copy(self, data_handler: DataHandler = None):
+        if data_handler is None:
+            new = self.__class__(self.data_handler)
+        else:
+            new = self.__class__(data_handler)
+
+        """ TODO  """
+        for attribute_key in self.__dict__.keys():
+            if attribute_key != 'data_handler':
+                new.__dict__[attribute_key] = self.__dict__[attribute_key]
+        return new
