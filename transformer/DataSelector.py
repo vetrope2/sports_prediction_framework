@@ -3,6 +3,21 @@ from transformer.ScopeSelector import *
 
 
 class DataSelector:
+    """
+    Manages synchronized updates across training and testing data scopes.
+
+    DataSelector coordinates iteration over combinations of training and testing
+    scopes, applying logic such as updating, validation (`holds()`), and resetting
+    of state. It serves as a unified interface to handle these paired scopes and
+    traverse all valid combinations recursively, even when the number of scopes differs.
+
+    Attributes:
+        train_selectors (list[ScopeSelector]): List of training data scope selectors.
+        test_selectors (list[ScopeSelector]): List of testing data scope selectors.
+        max_index (int): The maximum number of selectors among train/test.
+        selector_index (int): The current index of the selector being updated.
+    """
+
     train_selectors = [Scope]
     test_selectors = [Scope]
 

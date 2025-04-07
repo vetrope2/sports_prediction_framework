@@ -21,6 +21,9 @@ class ScopeSelector(ABC):
     def holds(self):
         return self.scope.inside()
 
+    def reset_state(self):
+        self.scope.reset_state()
+
 
 
 class WindowSelector(ScopeSelector):

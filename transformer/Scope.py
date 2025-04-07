@@ -16,6 +16,9 @@ class Scope(ABC):
     def inside(self):
         pass
 
+    def reset_state(self):
+        pass
+
 
 
 
@@ -42,6 +45,10 @@ class WindowScope(Scope):
                 self.max = self.wrapper.get_dataframe()[self.parameters['col']].max()
             self.orig_start = self.start
             self.orig_size = self.size
+
+    def reset_state(self):
+        self.start = self.orig_start
+        self.size = self.orig_size
 
 class ScopeExpander(WindowScope):
 
