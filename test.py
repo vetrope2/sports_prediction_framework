@@ -1,5 +1,7 @@
 from datawrapper.SportType import SportType
 from dataloader.DataLoader import DataLoader
+from transformer.Scope import *
+from transformer.ScopeSelector import *
 
 """c = Connector()
 c.connect_to_db_via_ssh()
@@ -16,9 +18,17 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 
 #df = DataLoader.load("isdb", "Leagues", lambda c: True)
 
-
+#WORKING
 dw = DataLoader.load_and_wrap("isdb", "Matches", lambda c: c.Lge == "GER1", SportType.FOOTBALL)
 
+init_parameters = {'col': 'Season', 'start': 2000, 'max': 2005, 'size': 1, 'stride': 2}
+sc = ScopeExpander(dw, init_parameters)
+sel = WindowSelector(sc)
+sel.update()
 
-print(dw.get_dataframe())
+
+
+
+
+
 

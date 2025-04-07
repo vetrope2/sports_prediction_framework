@@ -22,6 +22,7 @@ class ScopeSelector(ABC):
         return self.scope.inside()
 
 
+
 class WindowSelector(ScopeSelector):
 
     def __init__(self, scope: Scope) -> None:
@@ -31,7 +32,7 @@ class WindowSelector(ScopeSelector):
         data = dataset.get_dataframe()
         trans = data[(data[self.scope.col] >= self.scope.start) &
                      (data[self.scope.col] <= self.scope.start+self.scope.size)]
-        return dataset.deepcopy(trans, suffix="_filtered")
+        return dataset.deepcopy(trans)
 
     def __str__(self):
         return str(self.scope.start) + ' ' + str(self.scope.start+self.scope.size)
