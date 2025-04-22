@@ -2,7 +2,7 @@ from datawrapper.DataWrapper import DataWrapper
 from transformer.BaseTransformer import BaseTransformer
 
 class Transformer:
-    transformations = {'names_to_ids':False, 'names_to_ids_scope':False, 'remove_small_seasons':False,
+    transformations = {'names_to_ids':True, 'names_to_ids_scope':False, 'remove_small_seasons':False,
               'result_column':False, 'score_diff':False, 'round_column':False, 'date_from_time':False,
               'only_latest_odds': False, 'only_first_odds': False, 'first_and_latest_odds': False}
 
@@ -48,6 +48,8 @@ class Transformer:
             DataWrapper: The transformed data wrapper after applying the selected transformations.
         """
         t = self.transformations
+        if t['names_to_ids']:
+            wrapper = self.base_transformer.names_to_ids(wrapper)
         if t['date_from_time']:
             wrapper = self.base_transformer.get_date_from_time(wrapper)
         if t['only_first_odds']:

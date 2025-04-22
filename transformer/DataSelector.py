@@ -86,3 +86,8 @@ class DataSelector:
 
     def transform_train(self, wrapper: DataWrapper):
         return self.transform_wrapper(wrapper, self.train_selectors)
+
+    def reset_state(self):
+        self.selector_index = self.max_index - 1
+        for selector in self.train_selectors:
+            selector.reset_state()

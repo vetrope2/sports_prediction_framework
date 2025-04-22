@@ -7,6 +7,11 @@ class BaseTransformer:
     def __init__(self):
         self.id_map = {}
 
+    def add_features(self, wrapper: DataWrapper, features) -> DataWrapper:
+        dataset_c = wrapper.deepcopy()
+        dataset_c.add_features(features)
+        return dataset_c
+
     def names_to_ids(self, wrapper: DataWrapper):
 
         data = wrapper.data_handler
@@ -17,7 +22,8 @@ class BaseTransformer:
         data = wrapper.data_handler
         for namec, idc in zip(wrapper.name_columns, wrapper.name_id_columns):
             series.append(data.dataframe[namec].map(self.id_map.get).rename(idc))
-        return pd.concat(series, axis=1)
+
+        return self.add_features(wrapper, pd.concat(series, axis=1))
 
     def remove_small_seasons(self, wrapper: DataWrapper, min_teams: int):
         """
