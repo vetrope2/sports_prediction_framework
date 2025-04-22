@@ -14,4 +14,4 @@ class NeuralModel(Model):
         self.model.fit(features, labels)
 
     def predict(self, data: pd.DataFrame, mode="test") -> np.ndarray:
-        self.model.predict(data)
+        return self.model.predict(data)
