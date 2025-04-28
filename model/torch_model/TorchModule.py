@@ -21,7 +21,7 @@ class TorchModule(torch.nn.Module, ABC):
          Subclasses can override these or pass them via kwargs.
          """
         super(TorchModule, self).__init__()
-        self.print_info = True              # Whether to print info during training
+        self.print_info = False             # Whether to print info during training
         self.batch_size = 9                 # Mini-batch size
         self.epochs = 100                   # Number of training epochs
         self.train_loss = []                # Store average training loss per epoch
@@ -155,3 +155,5 @@ class TorchModule(torch.nn.Module, ABC):
 
         self.train()  # Switch back to training mode
         return outputs
+
+

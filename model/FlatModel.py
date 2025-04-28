@@ -1,5 +1,5 @@
 from model.NeuralModel import NeuralModel
-from torch_model.TorchFlat import TorchFlat
+from model.torch_model.TorchFlat import TorchFlat
 from datawrapper.sport.MatchWrapper import MatchWrapper
 import torch
 
@@ -8,7 +8,7 @@ from typing import Optional
 
 class FlatModel(NeuralModel):
 
-    def __init__(self, pretrained_weights: Optional[torch.Tensor] = None, **kwargs) -> None:
+    def __init__(self,params: dict, pretrained_weights: Optional[torch.Tensor] = None, **kwargs) -> None:
         """
         Initialize the FlatModel. Creates an instance of the TorchFlat model and sets it up.
 
@@ -20,6 +20,7 @@ class FlatModel(NeuralModel):
         # Initialize the TorchFlat model with optional pretrained weights
         super().__init__(**kwargs)
         self.model = TorchFlat(pretrained_weights)
+        self.set_params(params)
 
         # Call the complex initialization of the model to set up the layers
         self.model.complex_init()

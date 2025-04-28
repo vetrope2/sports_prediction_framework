@@ -19,3 +19,8 @@ class Model:
 
     def reset_state(self):
         raise NotImplementedError
+
+
+    def set_params(self, params: dict):
+        for key,value in params.items():
+            setattr(self.model, key, value)

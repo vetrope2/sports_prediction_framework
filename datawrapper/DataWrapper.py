@@ -52,6 +52,9 @@ class DataWrapper:
     def set_after_compute_values(self):
         pass
 
+    def empty(self):
+        return self.get_dataframe().empty
+
     def deepcopy(self, dataframe: pd.DataFrame = None, feat_cols=None, label_cols=None):
         return self.copy(self.data_handler.copy(dataframe, feat_cols, label_cols))
 

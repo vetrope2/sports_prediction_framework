@@ -34,7 +34,7 @@ class DataHandler:
             self.feature_cols.add(col)
 
     def get_labels(self):
-        return self.dataframe[self.label_cols]
+        return self.dataframe[list(self.label_cols)]
 
     def add_labels(self, labels):
         self.dataframe = self.dataframe.join(labels)

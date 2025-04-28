@@ -5,7 +5,7 @@ from typing import Optional, Tuple
 import pandas as pd
 
 from datawrapper.sport.MatchWrapper import MatchWrapper
-from model.torch.TorchModule import TorchModule
+from model.torch_model.TorchModule import TorchModule
 
 
 
@@ -22,6 +22,7 @@ class TorchFlat(TorchModule):
         :param pretrained_weights: Optional pretrained weights for team embeddings
         """
         super(TorchFlat, self).__init__()
+        self.activation = torch.nn.ReLU()
         if pretrained_weights is not None:
             self.embedding: Embedding = Embedding.from_pretrained(pretrained_weights)
         else:
@@ -31,24 +32,28 @@ class TorchFlat(TorchModule):
         """
         Initializes the dense architecture of the model according to the specified type.
         """
+        assert self.n_dense >= 2, "n_dense must be at least 2"
+
         if self.architecture_type == 'rectangle':
-            self.dense_dims = [self.dense_dim] * (self.n_dense - 2)
+            # n_dense-1 transitions before the output layer
+            self.dense_dims = [self.dense_dim] * (self.n_dense - 1)
         elif self.architecture_type == 'pyramid':
-            step = int((self.dense_dims + self.out_dim) / self.n_dense)
-            dim = self.dense_dims
+            self.dense_dims = []
+            step = max(1, (self.dense_dim - self.out_dim) // (self.n_dense - 1))
+            dim = self.dense_dim
             for _ in range(self.n_dense - 1):
                 self.dense_dims.append(dim)
-                dim = dim - step
+                dim = max(dim - step, self.out_dim)
 
         lin_layers = []
         lin_layers.append(torch.nn.Linear(self.embed_dim * 2, self.dense_dims[0]))
-        for i in range(self.n_dense - 2):
+        for i in range(len(self.dense_dims) - 1):
             lin_layers.append(torch.nn.Linear(self.dense_dims[i], self.dense_dims[i + 1]))
-        lin_layers.append(torch.nn.Linear(self.dense_dims[self.n_dense - 2], self.out_dim))
+        lin_layers.append(torch.nn.Linear(self.dense_dims[-1], self.out_dim))
 
-        self.lin_layers: ModuleList = ModuleList(lin_layers)
-        self.out: LogSoftmax = LogSoftmax(dim=1)
-        self.drop: Dropout = Dropout(p=0.1)
+        self.lin_layers = ModuleList(lin_layers)
+        self.out = LogSoftmax(dim=1)
+        self.drop = Dropout(p=0.1)
 
     def forward(self, data: pd.DataFrame, team_home: Tensor, team_away: Tensor) -> Tensor:
         """
@@ -101,6 +106,17 @@ class TorchFlat(TorchModule):
         :param batch_index: Starting index of the batch
         :return: A tensor of labels for the batch
         """
-        result = torch.from_numpy(
-            labels.iloc[batch_index:batch_index + self.batch_size].values.astype('int64').reshape(-1,))
+
+        batch_end = min(batch_index + self.batch_size, len(labels))
+
+        result_slice = labels.iloc[batch_index:batch_end]
+
+        # Convert the slice to a tensor
+        result = torch.from_numpy(result_slice.values.astype('int64').reshape(-1, ))
+
+        # Check the shape of the result
+
         return result
+
+    def model_specific_computation(self, features, labels, j):
+        pass

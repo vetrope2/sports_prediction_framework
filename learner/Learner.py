@@ -1,7 +1,7 @@
 import pandas as pd
 from datawrapper.DataWrapper import DataWrapper
-from Trainer import Trainer
-from Tester import Tester
+from learner.Trainer import Trainer
+from learner.Tester import Tester
 from transformer.DataSelector import DataSelector
 
 
@@ -25,6 +25,7 @@ class Learner:
     def train_test(self, dataset: DataWrapper) -> pd.DataFrame:
         train_wrapper = self.scope.transform_train(dataset)
         test_wrapper = self.scope.transform_test(dataset)
+        #print(f"{len(train_wrapper.get_dataframe())} +  + {len(test_wrapper.get_dataframe())}")
         if train_wrapper.empty() or test_wrapper.empty():
             return pd.DataFrame()
         self.train(train_wrapper)

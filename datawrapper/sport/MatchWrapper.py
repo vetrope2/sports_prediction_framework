@@ -12,7 +12,7 @@ class MatchWrapper(DataWrapper):
 
     def __init__(self, data_handler: DataHandler, home_advantage):
         super().__init__(data_handler, home_advantage)
-        self.total_set_of_teams = set()
+        self.total_set_of_teams = self.get_set_of_teams()
         self.total_number_of_teams = len(self.total_set_of_teams)
         self.total_set_of_teams_ids = set()
 
@@ -25,3 +25,6 @@ class MatchWrapper(DataWrapper):
 
     def get_set_of_teams_ids(self):
         return set(self.data_handler.dataframe['HID']).union(set(self.data_handler.dataframe['AID']))
+
+    def get_labels(self):
+        return self.get_dataframe()['WDL']
