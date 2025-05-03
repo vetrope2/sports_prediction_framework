@@ -17,6 +17,7 @@ class Trainer:
         self.model.set_parameters_from_wrapper(wrapper)
 
         self.model.fit(features, wrapper.get_labels())
+        print("train")
 
 
 

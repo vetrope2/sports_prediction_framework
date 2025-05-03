@@ -1,4 +1,4 @@
-from transformer.Scope import Scope
+from transformer.Scope import Scope, EnumScope
 from datawrapper.DataWrapper import DataWrapper
 from abc import ABC, abstractmethod
 
@@ -24,6 +24,9 @@ class ScopeSelector(ABC):
     def reset_state(self):
         self.scope.reset_state()
 
+    def current_state(self):
+        return self.scope.current_state()
+
 
 
 class WindowSelector(ScopeSelector):
@@ -39,6 +42,23 @@ class WindowSelector(ScopeSelector):
 
     def __str__(self):
         return str(self.scope.start) + ' ' + str(self.scope.start+self.scope.size)
+
+    def current_state(self):
+        return self.scope.current_state()
+
+class EnumSelector(ScopeSelector):
+
+    def __init__(self, scope: EnumScope):
+        super().__init__(scope)
+        self.scope = scope
+
+    def transform(self, dataset: DataWrapper) -> DataWrapper:
+        data = dataset.get_dataframe()
+        trans = data.loc[data[self.scope.col] == self.scope.enum[self.scope.cur_index]]
+        return dataset.deepcopy(trans)
+
+    def __str__(self):
+        return self.scope.enum[self.scope.cur_index]
 
     def current_state(self):
         return self.scope.current_state()

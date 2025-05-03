@@ -25,7 +25,6 @@ class Learner:
     def train_test(self, dataset: DataWrapper) -> pd.DataFrame:
         train_wrapper = self.scope.transform_train(dataset)
         test_wrapper = self.scope.transform_test(dataset)
-        #print(f"{len(train_wrapper.get_dataframe())} +  + {len(test_wrapper.get_dataframe())}")
         if train_wrapper.empty() or test_wrapper.empty():
             return pd.DataFrame()
         self.train(train_wrapper)
@@ -41,7 +40,8 @@ class Learner:
     def test(self, dataset: DataWrapper) -> pd.DataFrame:
         if self.tester is not None:
             if not dataset.get_dataframe().empty:
-                return self.tester.test(dataset)
+                predictions = self.tester.test(dataset)  # Quick sanity check
+                return predictions
             else:
                 raise ValueError("Missing data!")
         return None

@@ -6,6 +6,7 @@ from transformer.Transformer import *
 from transformer.DataSelector import *
 from model.FlatModel import *
 from learner.Learner import *
+from utils.TeamStrengthGraph import TeamStrengthGraph
 
 """c = Connector()
 c.connect_to_db_via_ssh()
@@ -30,15 +31,16 @@ init_parameters = {'col': 'Season', 'start': 2000, 'max': 2005, 'size': 1, 'stri
 t = Transformer()
 dw = t.transform(dw)
 
-relevant_scope = [WindowSelector(ScopeRoller())]
-prediction_scope = [WindowSelector(ScopeRoller())]
+relevant_scope = [WindowSelector(ScopeRoller(dw,{'col': 'Season', 'start': 2000, 'max': 2005, 'size': 100, 'stride': 2}))]
+prediction_scope = [WindowSelector(ScopeRoller(dw, {'col': 'Season', 'start': 2000, 'max': 2017, 'size': 100, 'stride': 2}))]
 scope = DataSelector(relevant_scope, prediction_scope)
 params = {'embed_dim': 32, 'out_dim': 3,'n_dense': 4,'dense_dim': 64,'architecture_type':'rectangle','batch_size':64,}
 flat = FlatModel(params)
-print(flat)
 l = Learner(Trainer(flat), Tester(flat), scope)
 prob = l.compute(dw)
-print(prob.get_dataframe().head())
+print(prob.get_dataframe())
+print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2005].iloc[0])
+
 #print(t.base_transformer.id_map)
 #print(dw.get_dataframe())
 
