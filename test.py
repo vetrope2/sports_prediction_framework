@@ -5,7 +5,7 @@ from transformer.ScopeSelector import *
 from transformer.Transformer import *
 from transformer.DataSelector import *
 from model.FlatModel import *
-from learner.Learner import *
+from learner.Learner import Learner, UpdatingLearner, Tester, Trainer
 from utils.TeamStrengthGraph import TeamStrengthGraph
 
 """c = Connector()
@@ -26,20 +26,20 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 #WORKING
 dw = DataLoader.load_and_wrap("isdb", "Matches", lambda c: c.Lge == "GER1", SportType.FOOTBALL)
 
-init_parameters = {'col': 'Season', 'start': 2000, 'max': 2005, 'size': 1, 'stride': 2}
 
 t = Transformer()
 dw = t.transform(dw)
 
-relevant_scope = [WindowSelector(ScopeRoller(dw,{'col': 'Season', 'start': 2000, 'max': 2005, 'size': 100, 'stride': 2}))]
-prediction_scope = [WindowSelector(ScopeRoller(dw, {'col': 'Season', 'start': 2000, 'max': 2017, 'size': 100, 'stride': 2}))]
+relevant_scope = [WindowSelector(ScopeExpander(dw,{'col': 'Season', 'start': 2000, 'max': 2001, 'size': 1, 'stride': 2}))]
+prediction_scope = [WindowSelector(ScopeExpander(dw, {'col': 'Season', 'start': 2000, 'max': 2001, 'size': 1, 'stride': 2}))]
 scope = DataSelector(relevant_scope, prediction_scope)
 params = {'embed_dim': 32, 'out_dim': 3,'n_dense': 4,'dense_dim': 64,'architecture_type':'rectangle','batch_size':64,}
 flat = FlatModel(params)
-l = Learner(Trainer(flat), Tester(flat), scope)
+l1 = Learner(Trainer(flat), Tester(flat), scope)
+l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
 prob = l.compute(dw)
-print(prob.get_dataframe())
-print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2005].iloc[0])
+print(prob.get_dataframe().head(400))
+print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2002].iloc[0])
 
 #print(t.base_transformer.id_map)
 #print(dw.get_dataframe())

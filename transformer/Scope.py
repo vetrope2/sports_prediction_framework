@@ -86,14 +86,13 @@ class ScopeRoller(WindowScope):
 
 class EnumScope(Scope):
 
-    default_parameters = {'col': 'League', 'enum': ['ENG1']}
+    default_parameters = {'col': 'League', 'enum': ['GER1']}
     cur_index = 0
 
     def __init__(self, wrapper=None, parameters=default_parameters):
         super().__init__(wrapper, parameters)
 
     def set_parameters_from_wrapper(self, wrapper:DataWrapper):
-        super(EnumScope, self).set_parameters_from_wrapper(wrapper)
         if 'enum' not in self.parameters:
             self.enum = pd.unique(self.wrapper.get_columns(self.col)).tolist()
 
