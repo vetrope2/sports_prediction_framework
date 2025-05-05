@@ -7,6 +7,7 @@ from transformer.DataSelector import *
 from model.FlatModel import *
 from learner.Learner import Learner, UpdatingLearner, Tester, Trainer
 from sqlalchemy import or_
+from utils.Evaluation import evaluate_metrics
 
 func = lambda c: or_(c.Lge == "GER1", c.Lge == "ENG1")
 dw = DataLoader.load_and_wrap("isdb", "Matches", func, SportType.FOOTBALL)
@@ -15,8 +16,8 @@ dw = DataLoader.load_and_wrap("isdb", "Matches", func, SportType.FOOTBALL)
 t = Transformer()
 dw = t.transform(dw)
 
-train_params = {'col': 'Season', 'start': 2000, 'max': 2001, 'size': 1, 'stride': 2}
-test_params = {'col': 'Season', 'start': 2002, 'max': 2003, 'size': 1, 'stride': 2}
+train_params = {'col': 'Season', 'start': 2000, 'max': 2002, 'size': 1, 'stride': 1}
+test_params = {'col': 'Season', 'start': 2000, 'max': 2002, 'size': 1, 'stride': 1}
 relevant_scope = [WindowSelector(ScopeExpander(dw,train_params))]
 prediction_scope = [WindowSelector(ScopeExpander(dw, test_params))]
 scope = DataSelector(relevant_scope, prediction_scope)
@@ -29,6 +30,9 @@ l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
 prob = l.compute(dw)
 
 
-print(prob.get_dataframe().head(400))
-print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2002])
+#print(prob.get_dataframe().head(400))
+#print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2000])
+
+df,matrix = evaluate_metrics(prob.get_dataframe(), 'macro')
+print(df)
 
