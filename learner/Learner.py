@@ -47,6 +47,11 @@ class Learner:
                 raise ValueError("Missing data!")
         return None
 
+    def set_model_hyper_params(self, params):
+        self.trainer.model.set_params(params)
+        self.tester.model.set_params(params)
+        #print(self.trainer.model.model.__getattribute__("dense_dim"))
+
     def reset_state(self):
         self.trainer.reset_state()
 

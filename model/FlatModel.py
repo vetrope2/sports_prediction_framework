@@ -19,6 +19,9 @@ class FlatModel(NeuralModel):
         """
         # Initialize the TorchFlat model with optional pretrained weights
         super().__init__(**kwargs)
+        self.params = params
+        self.pretrained_weights = pretrained_weights
+
         self.model = TorchFlat(pretrained_weights)
         self.set_params(params)
 
@@ -35,3 +38,10 @@ class FlatModel(NeuralModel):
         """
         # Set model parameters using data from the wrapper (e.g., number of teams)
         self.model.set_parameters_from_wrapper(wrapper)
+
+    def reset_state(self):
+        self.model = TorchFlat(self.pretrained_weights)
+        self.set_params(self.params)
+
+        # Call the complex initialization of the model to set up the layers
+        self.model.complex_init()

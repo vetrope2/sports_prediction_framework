@@ -12,6 +12,17 @@ from sklearn.metrics import (
     confusion_matrix,
 )
 
+from enum import Enum
+
+
+class Metric(Enum):
+    ACCURACY = "Accuracy"
+    PRECISION = "Precision"
+    RECALL = "Recall"
+    F1_SCORE = "F1 Score"
+    BRIER_SCORE = "Brier Score"
+    RPS = "RPS"
+
 
 def evaluate_metrics(df: pd.DataFrame, average: str = None) -> tuple[DataFrame, ndarray]:
     """

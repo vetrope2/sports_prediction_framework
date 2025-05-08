@@ -7,9 +7,11 @@ from transformer.DataSelector import *
 from model.FlatModel import *
 from learner.Learner import Learner, UpdatingLearner, Tester, Trainer
 from sqlalchemy import or_
+from optimizer.Optimizer import Optimizer
+from utils.Evaluation import Metric
+from utils.Evaluation import evaluate_metrics
 
-
-func = lambda c: or_(c.Lge == "GER1", c.Lge == "ENG1")
+func = lambda c: c.Lge == "GER1"
 dw = DataLoader.load_and_wrap("isdb", "Matches", func, SportType.FOOTBALL)
 
 
@@ -27,8 +29,13 @@ flat = FlatModel(model_params)
 
 l1 = Learner(Trainer(flat), Tester(flat), scope)
 l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
-prob = l.compute(dw)
-print(prob.get_dataframe())
 
 
+search_space = {
+    'n_dense': ('int', 2, 5),
+}
 
+opt = Optimizer(dw, l, Metric.ACCURACY, search_space, n_trials=4)
+opt.run()
+print(opt.best_params())
+print(opt.best_value())
