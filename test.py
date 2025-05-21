@@ -7,6 +7,7 @@ from transformer.DataSelector import *
 from model.FlatModel import *
 from learner.Learner import Learner, UpdatingLearner, Tester, Trainer
 from utils.TeamStrengthGraph import TeamStrengthGraph
+from simulation.FlatBettingSimulation import FlatBettingSimulation
 
 """c = Connector()
 c.connect_to_db_via_ssh()
@@ -25,8 +26,8 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 
 #WORKING
 dw = DataLoader.load_and_wrap_odds("football", "Matches", lambda c: c.League == "Bundesliga", SportType.FOOTBALL, bookmaker="bet365")
-print(dw.get_dataframe())
 #dw = DataLoader.load_and_wrap("isdb", "Matches", lambda c: c.Lge == "GER1", SportType.FOOTBALL)
+
 
 
 t = Transformer()
@@ -41,7 +42,11 @@ flat = FlatModel(params)
 l1 = Learner(Trainer(flat), Tester(flat), scope)
 l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
 prob = l.compute(dw)
-print(prob.get_dataframe().head(10))
+
+sim = FlatBettingSimulation(prob)
+sim.run()
+sim.evaluate()
+sim.summary()
 
 #print(t.base_transformer.id_map)
 #print(dw.get_dataframe())

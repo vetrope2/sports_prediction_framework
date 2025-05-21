@@ -46,11 +46,10 @@ class DataLoader:
         bets = bets.rename(columns={"1": "odds_1", "X": "odds_X", "2": "odds_2"})
 
 
-
         cols_to_join = ["MatchID", "odds_1", "odds_X", "odds_2"]
         odds_subset = bets[cols_to_join]
         df = df.merge(odds_subset, on="MatchID", how="inner")
-        #print(df)
+        df[["odds_1", "odds_X", "odds_2"]] = df[["odds_1", "odds_X", "odds_2"]].apply(pd.to_numeric, errors='coerce')
 
         handler = DataHandler(df)
         wrapper = sport.get_wrapper()(handler)
