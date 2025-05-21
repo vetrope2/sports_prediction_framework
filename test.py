@@ -24,22 +24,24 @@ frame = pd.read_sql_query('SELECT * FROM "isdb"."Leagues" LIMIT 5;', con=c.eng)"
 #df = DataLoader.load("isdb", "Leagues", lambda c: True)
 
 #WORKING
-dw = DataLoader.load_and_wrap("isdb", "Matches", lambda c: c.Lge == "GER1", SportType.FOOTBALL)
+dw = DataLoader.load_and_wrap_odds("football", "Matches", lambda c: c.League == "Bundesliga", SportType.FOOTBALL, bookmaker="bet365")
+print(dw.get_dataframe())
+#dw = DataLoader.load_and_wrap("isdb", "Matches", lambda c: c.Lge == "GER1", SportType.FOOTBALL)
 
 
 t = Transformer()
 dw = t.transform(dw)
 
-relevant_scope = [WindowSelector(ScopeExpander(dw,{'col': 'Season', 'start': 2000, 'max': 2001, 'size': 1, 'stride': 2}))]
-prediction_scope = [WindowSelector(ScopeExpander(dw, {'col': 'Season', 'start': 2000, 'max': 2001, 'size': 1, 'stride': 2}))]
+
+relevant_scope = [WindowSelector(ScopeExpander(dw,{'col': 'Season', 'start': 2015, 'max': 2018, 'size': 1, 'stride': 2}))]
+prediction_scope = [WindowSelector(ScopeExpander(dw, {'col': 'Season', 'start': 2015, 'max': 2018, 'size': 1, 'stride': 2}))]
 scope = DataSelector(relevant_scope, prediction_scope)
 params = {'embed_dim': 32, 'out_dim': 3,'n_dense': 4,'dense_dim': 64,'architecture_type':'rectangle','batch_size':64,}
 flat = FlatModel(params)
 l1 = Learner(Trainer(flat), Tester(flat), scope)
 l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
 prob = l.compute(dw)
-print(prob.get_dataframe().head(400))
-print(prob.get_dataframe().loc[prob.get_dataframe()["Season"] == 2002].iloc[0])
+print(prob.get_dataframe().head(10))
 
 #print(t.base_transformer.id_map)
 #print(dw.get_dataframe())

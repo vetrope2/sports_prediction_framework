@@ -34,3 +34,26 @@ class DataLoader:
         ds.close()
 
         return wrapper
+
+    @classmethod
+    def load_and_wrap_odds(cls, schema_name, table_name, filter_func, sport: SportType = None, bookmaker=None):
+        ds = DataSource(sport)
+        df = ds.query(schema_name, table_name, filter_func)
+
+
+        bookie_func = lambda c: c.Bookmaker == bookmaker
+        bets = ds.query_no_parse(schema_name, "Odds_1x2", bookie_func)
+        bets = bets.rename(columns={"1": "odds_1", "X": "odds_X", "2": "odds_2"})
+
+
+
+        cols_to_join = ["MatchID", "odds_1", "odds_X", "odds_2"]
+        odds_subset = bets[cols_to_join]
+        df = df.merge(odds_subset, on="MatchID", how="inner")
+        #print(df)
+
+        handler = DataHandler(df)
+        wrapper = sport.get_wrapper()(handler)
+        ds.close()
+
+        return wrapper

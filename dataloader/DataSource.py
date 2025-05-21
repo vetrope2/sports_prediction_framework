@@ -36,6 +36,10 @@ class DataSource:
                 return self.parser.parse_isdb(df)
             case "flashscore":
                 return self.parser.parse_flashscore(df)
+            case "betexplorer":
+                return self.parser.parse_betexplorer(df)
+            case _:
+                return df
 
 
 
@@ -43,12 +47,18 @@ class DataSource:
         metadata = MetaData(schema=schema_name)
 
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
-
         query = select(table).filter(filter_func(table.c))
-
         df = pd.read_sql(query, self.con.session.bind)
-
         df = self.parse_data(df)
+
+        return df
+
+    def query_no_parse(self, schema_name, table_name, filter_func) -> pd.DataFrame:
+        metadata = MetaData(schema=schema_name)
+
+        table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
+        query = select(table).filter(filter_func(table.c))
+        df = pd.read_sql(query, self.con.session.bind)
 
         return df
 
