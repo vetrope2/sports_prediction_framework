@@ -15,16 +15,7 @@ class KellySimulation(Simulation):
         DataWrapper instance containing the data to simulate on.
     initial_bankroll : float
         The starting bankroll, default is 1.0.
-    total_return : float
-        Total profit or loss after simulation.
-    mean_return : float
-        Average return per bet.
-    std_dev : float
-        Standard deviation of returns.
-    sharpe_ratio : float
-        Sharpe ratio of returns.
-    bankroll_history : list
-        Bankroll values after each bet.
+
     """
 
     def __init__(self, data_wrapper, initial_bankroll=1.0):
