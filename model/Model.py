@@ -29,7 +29,6 @@ class Model:
         for key,value in params.items():
             setattr(self.model, key, value)
 
-
     def _get_init_params(self) -> dict:
         """
         Retrieve the constructor parameters of the model instance.
