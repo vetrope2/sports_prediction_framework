@@ -18,10 +18,15 @@ This framework enables seamless data ingestion, model training, prediction, and 
 
 ## Installation
 
-Install the framework locally:
+Install the framework locally from the folder:
 
 ```bash
 pip install .
+```
+
+Install from pypi:
+```bash
+pip install sports-prediction-framework
 ```
 
 ## Example usage
