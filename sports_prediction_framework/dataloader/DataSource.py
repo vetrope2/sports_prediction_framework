@@ -6,31 +6,53 @@ from sqlalchemy.sql import select
 
 
 class DataSource:
+    """
+    Provides an interface for querying a PostgreSQL database with optional parsing based on sport type.
+    Can connect either directly or via SSH tunneling and supports multiple query types.
+    """
 
-    def __init__(self,sport_type: SportType = None, via_ssh=True):
+    def __init__(self, sport_type: SportType = None, via_ssh=True):
+        """
+        Initializes the DataSource and establishes a database connection.
+
+        Args:
+            sport_type (SportType, optional): If provided, sets up a parser specific to the sport.
+            via_ssh (bool): If True, establishes the connection through SSH tunneling.
+        """
         self.con = Connector()
         self.db_type = self.con.config['DB_NAME']
 
         if sport_type is not None:
             self.parser = sport_type.get_parser()()
 
-
         if via_ssh:
             self.con.connect_to_db_via_ssh()
         else:
             self.con.connect_to_db()
 
-
-
-    def plain_query(self, query:str) -> pd.DataFrame:
+    def plain_query(self, query: str) -> pd.DataFrame:
         """
-        Executes a raw SQL query provided in the query string. This method is dangerous
-        because it directly interpolates user input into the SQL query string, which can lead
-        to SQL injection attacks, since the input is not sanitized.
+        Executes a raw SQL query directly.
+        WARNING: This method does not sanitize inputs and is vulnerable to SQL injection. Use with caution.
+
+        Args:
+            query (str): Raw SQL query string.
+
+        Returns:
+            pd.DataFrame: Query results.
         """
         return pd.read_sql_query(query, con=self.con.get_engine())
 
     def parse_data(self, df: pd.DataFrame):
+        """
+        Parses the DataFrame according to the parser configured for the current database type.
+
+        Args:
+            df (pd.DataFrame): Raw query results.
+
+        Returns:
+            pd.DataFrame: Parsed DataFrame.
+        """
         match self.db_type:
             case "bet":
                 return self.parser.parse_isdb(df)
@@ -41,53 +63,76 @@ class DataSource:
             case _:
                 return df
 
-
-
     def query(self, schema_name, table_name, filter_func) -> pd.DataFrame:
-        metadata = MetaData(schema=schema_name)
+        """
+        Executes a filtered SQL query and parses the result based on the database type.
 
+        Args:
+            schema_name (str): Schema name.
+            table_name (str): Table name.
+            filter_func (Callable): Filter function to apply on table columns.
+
+        Returns:
+            pd.DataFrame: Parsed query result.
+        """
+        metadata = MetaData(schema=schema_name)
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
         query = select(table).filter(filter_func(table.c))
         df = pd.read_sql(query, self.con.session.bind)
-        df = self.parse_data(df)
-
-        return df
+        return self.parse_data(df)
 
     def query_no_parse(self, schema_name, table_name, filter_func) -> pd.DataFrame:
-        metadata = MetaData(schema=schema_name)
+        """
+        Executes a filtered SQL query without parsing the result.
 
+        Args:
+            schema_name (str): Schema name.
+            table_name (str): Table name.
+            filter_func (Callable): Filter function to apply on table columns.
+
+        Returns:
+            pd.DataFrame: Raw query result.
+        """
+        metadata = MetaData(schema=schema_name)
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
         query = select(table).filter(filter_func(table.c))
         df = pd.read_sql(query, self.con.session.bind)
-
         return df
 
     def preview_query(self, schema_name, table_name, filter_func) -> pd.DataFrame:
+        """
+        Retrieves a limited preview (5 rows) of the query results.
+
+        Args:
+            schema_name (str): Schema name.
+            table_name (str): Table name.
+            filter_func (Callable): Filter function to apply on table columns.
+
+        Returns:
+            pd.DataFrame: Preview of the query result.
+        """
         metadata = MetaData(schema=schema_name)
-
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
-
         query = select(table).filter(filter_func(table.c)).limit(5)
-
         df = pd.read_sql(query, self.con.session.bind)
-
         return df
 
     def query_distinct(self, schema_name, table_name, filter_func, distinct_cols=None) -> pd.DataFrame:
         """
-        This function executes a SQL query that retrieves distinct rows based on a specific column,
-        while returning all columns from the table.
+        Executes a query that returns distinct rows based on specified columns.
 
-        WARNING: This query uses PostgreSQL-specific feature `DISTINCT ON`.
+        WARNING: This uses PostgreSQL-specific `DISTINCT ON` functionality.
 
-        Arguments:
-            schema_name (str): The schema of the table.
-            table_name (str): The name of the table.
-            filter_func (callable): A filter function to apply on the table's columns.
-            distinct_cols (list): List of columns to apply DISTINCT ON.
+        Args:
+            schema_name (str): Schema name.
+            table_name (str): Table name.
+            filter_func (Callable): Filter function to apply on table columns.
+            distinct_cols (list, optional): Columns to apply DISTINCT ON.
+
+        Returns:
+            pd.DataFrame: Resulting DataFrame with distinct rows.
         """
         metadata = MetaData(schema=schema_name)
-
         table = Table(table_name, metadata, autoload_with=self.con.eng, schema=schema_name)
 
         if distinct_cols:
@@ -96,8 +141,11 @@ class DataSource:
             query = select(table).filter(filter_func(table.c))
 
         df = pd.read_sql(query, self.con.session.bind)
-
         return df
 
     def close(self):
+        """
+        Closes the database session and SSH tunnel (if used).
+        """
         self.con.close()
+
