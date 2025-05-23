@@ -24,6 +24,14 @@ Install the framework locally:
 pip install .
 ```
 
+## Example usage
+
+!! The framework uses database configuration from the .env file in your current working directory.
+```bash
+python sports_prediction_framework/examples/simulation_example.py
+```
+
+
 ## End-to-End Example
 
 This example demonstrates how to:
