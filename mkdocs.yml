@@ -1,0 +1,21 @@
+site_name: sports_prediction_framework
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [sports_prediction_framework]
+
+nav:
+  - Home: index.md
+  - Getting Started: usage.md
+  - API Reference:
+    - dataloader: reference/dataloader.md
+    - datawrapper:
+      - Base wrappers: reference/datawrapper_base.md
+      - Advanced wrappers: reference/datawrapper_advanced.md
+    - learner: reference/learner.md
+
