@@ -1,4 +1,5 @@
 import pandas as pd
+import copy
 
 
 class DataHandler:
@@ -124,22 +125,14 @@ class DataHandler:
 
     def copy(self, dataframe: pd.DataFrame = None, feat_cols=None, label_cols=None):
         """
-        Creates a copy of the DataHandler, optionally with a new DataFrame and column sets.
-
-        Args:
-            dataframe (pd.DataFrame, optional): New DataFrame to copy. Defaults to current.
-            feat_cols (iterable, optional): Feature columns for the new handler. Defaults to current.
-            label_cols (iterable, optional): Label columns for the new handler. Defaults to current.
-
-        Returns:
-            DataHandler: A new DataHandler instance with the copied data and metadata.
+        Creates a deep copy of the DataHandler.
         """
         if dataframe is None:
-            dataframe = self.dataframe
+            dataframe = self.dataframe.copy(deep=True)  # <-- deep copy of DataFrame
         if feat_cols is None:
-            feat_cols = self.feature_cols
+            feat_cols = copy.deepcopy(self.feature_cols)
         if label_cols is None:
-            label_cols = self.label_cols
+            label_cols = copy.deepcopy(self.label_cols)
 
         return DataHandler(dataframe, feature_cols=feat_cols, label_cols=label_cols)
 

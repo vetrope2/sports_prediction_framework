@@ -11,11 +11,21 @@ plugins:
 
 nav:
   - Home: index.md
+  - Installation: installation.md
   - Getting Started: usage.md
+  - Data Loading: loader.md
+  - Data Handling: wrapper.md
   - API Reference:
     - dataloader: reference/dataloader.md
     - datawrapper:
       - Base wrappers: reference/datawrapper_base.md
       - Advanced wrappers: reference/datawrapper_advanced.md
+    - transformer:
+      - transformations: reference/transformations.md
+      - scope: reference/scope.md
     - learner: reference/learner.md
+    - optimizer: reference/optimizer.md
+    - simulation:
+       - Base class: reference/simulation.md
+       - Simulation implementations: reference/simulation_advanced.md
 

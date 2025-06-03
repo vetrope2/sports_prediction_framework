@@ -20,6 +20,7 @@ class MatchWrapper(DataWrapper):
     score_columns = ['HS', 'AS']
     result_column = ['WDL']
     prediction_columns = [1, 0, 2]
+    odds_columns = ['odds_1',  'odds_X',  'odds_2']
 
     def __init__(self, data_handler: DataHandler, home_advantage):
         """
@@ -33,6 +34,29 @@ class MatchWrapper(DataWrapper):
         self.total_set_of_teams = self.get_set_of_teams()
         self.total_number_of_teams = len(self.total_set_of_teams)
         self.total_set_of_teams_ids = set()
+
+
+    def __str__(self):
+        # All column groups combined
+        column_groups = (
+            ['Date']+
+            self.name_columns +
+            self.name_id_columns +
+            self.score_columns +
+            self.result_column +
+            self.odds_columns +
+            self.prediction_columns
+
+
+        )
+
+        # Filter only existing columns
+        existing_columns = [col for col in column_groups if col in self.get_dataframe().columns]
+
+        if not existing_columns:
+            return "No matching columns found."
+
+        return str(self.get_dataframe()[existing_columns])
 
     def set_after_compute_values(self):
         """

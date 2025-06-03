@@ -23,8 +23,7 @@ class Learner:
         self.trainer = trainer
         self.tester = tester
         self.scope = scope
-        if self.scope is None:
-            raise ValueError("Scope has to be set!")
+        self.last = True
 
     def compute(self, wrapper: DataWrapper) -> DataWrapper:
         """
@@ -37,11 +36,15 @@ class Learner:
             DataWrapper: Copy of the input wrapper with added predictions.
         """
         features = self.train_test(wrapper)
+        print(features)
         if features is None:
             return wrapper
         features = features[~features.index.duplicated(keep='first')]
         pwrapper = wrapper.deepcopy()
-        pwrapper.add_predictions(features)
+        if self.last:
+            pwrapper.add_predictions(features)
+        else:
+            pwrapper.add_features(features)
         return pwrapper
 
     def train_test(self, dataset: DataWrapper) -> pd.DataFrame:
@@ -59,6 +62,7 @@ class Learner:
         if train_wrapper.empty() or test_wrapper.empty():
             return pd.DataFrame()
         self.train(train_wrapper)
+
         return self.test(test_wrapper)
 
     def train(self, dataset: DataWrapper):
@@ -188,7 +192,7 @@ class UpdatingLearner(Learner):
         """
         outputs = []
         copy = wrapper.deepcopy()
-
+        # iteratively check if still within dataset scope
         while self.scope.holds():
             if self.learners:
                 wrappers = []
@@ -196,13 +200,15 @@ class UpdatingLearner(Learner):
                     wrappers.append(learner.compute(copy))
                     learner.update()
                 wrapper = self.merger.compute(wrappers)
-
             outputs.append(super().train_test(wrapper))
             self.update()
 
-        if self.tester is not None and outputs:
-            return pd.concat(outputs)
-        return pd.DataFrame() if outputs else None
+        if self.tester is not None:
+            if len(outputs) == 0:
+                return pd.DataFrame()
+            features = pd.concat([data for data in outputs])
+            return features
+        return None
 
     def reset_state(self):
         """

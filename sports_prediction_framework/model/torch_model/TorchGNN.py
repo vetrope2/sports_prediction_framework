@@ -28,7 +28,7 @@ class TorchGNN(TorchModule):
             self.conv_dims = [self.conv_dim] * (self.n_conv + 1)
             self.dense_dims = [self.dense_dim] * self.n_dense
 
-        self.activation = nn.ReLU()  # or another, configurable
+        self.activation = nn.ReLU()
 
         self.conv_layers = ModuleList(
             [GraphConv(self.embed_dim, self.conv_dims[0])] +
@@ -50,13 +50,13 @@ class TorchGNN(TorchModule):
         """
         if self.num_teams is None:
             self.num_teams = wrapper.total_number_of_teams
-            self.embedding = Embedding(self.num_teams, self.embed_dim)
+            self.embedding = Embedding(num_embeddings=self.num_teams, embedding_dim=self.embed_dim)
 
     def forward(self, features, home, away):
         """
         Performs a forward pass using the current match features and graph structure.
         """
-        key = features.iloc[0][self.graph.column][1]  # gets scalar value
+        key = features.iloc[0][self.graph.column].iloc[1]  # gets scalar value
 
         graph = self.graph.graphs[key]
         edge_index, edge_weight = graph.edge_index, graph.edge_weight

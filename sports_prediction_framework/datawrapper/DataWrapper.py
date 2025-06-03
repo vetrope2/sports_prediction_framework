@@ -1,5 +1,6 @@
 from sports_prediction_framework.datawrapper.DataHandler import DataHandler
 import pandas as pd
+import copy
 
 
 class DataWrapper:
@@ -150,37 +151,12 @@ class DataWrapper:
         return self.get_dataframe().empty
 
     def deepcopy(self, dataframe: pd.DataFrame = None, feat_cols=None, label_cols=None):
-        """
-        Creates a deep copy of the wrapper with optionally a new DataFrame and column sets.
+        new_handler = self.data_handler.copy(dataframe, feat_cols, label_cols)
+        new = self.__class__(new_handler)
 
-        Args:
-            dataframe (pd.DataFrame, optional): New DataFrame to use.
-            feat_cols (iterable, optional): Feature columns for the new wrapper.
-            label_cols (iterable, optional): Label columns for the new wrapper.
-
-        Returns:
-            DataWrapper: A new instance of the same class with copied data.
-        """
-        return self.copy(self.data_handler.copy(dataframe, feat_cols, label_cols))
-
-    def copy(self, data_handler: DataHandler = None):
-        """
-        Creates a shallow copy of this wrapper, optionally using a different DataHandler.
-
-        Args:
-            data_handler (DataHandler, optional): Alternate DataHandler to use.
-
-        Returns:
-            DataWrapper: A new instance of the same class with shared or replaced DataHandler.
-        """
-        if data_handler is None:
-            new = self.__class__(self.data_handler)
-        else:
-            new = self.__class__(data_handler)
-
-        for attribute_key in self.__dict__.keys():
+        for attribute_key, value in self.__dict__.items():
             if attribute_key != 'data_handler':
-                new.__dict__[attribute_key] = self.__dict__[attribute_key]
+                new.__dict__[attribute_key] = copy.deepcopy(value)
 
         return new
 

@@ -34,16 +34,17 @@ class TeamStrengthGraph:
         Args:
             wrapper: A data wrapper object used for transformation.
         """
+
         while self.scope.holds():
             trans = self.scope.transform(wrapper)
             if isinstance(trans, MatchWrapper):
                 num_teams = len(trans.get_set_of_teams())
                 num_matches = len(trans.get_dataframe().index)
                 key = self.scope.current_state()[1][0]
-                print(num_teams)
                 self.graphs[key] = self.Graph(num_teams, num_matches)
                 #print(key)
                 self.scope.update()
+
 
 
 

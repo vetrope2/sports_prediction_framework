@@ -1,15 +1,12 @@
 from sports_prediction_framework.datawrapper.SportType import SportType
 from sports_prediction_framework.dataloader.DataLoader import DataLoader
 from sports_prediction_framework.transformer.Scope import *
-from sports_prediction_framework.transformer.ScopeSelector import *
 from sports_prediction_framework.transformer.Transformer import *
 from sports_prediction_framework.transformer.DataSelector import *
 from sports_prediction_framework.model.FlatModel import *
 from sports_prediction_framework.learner.Learner import Learner, UpdatingLearner, Tester, Trainer
-from sqlalchemy import or_
 from sports_prediction_framework.optimizer.Optimizer import Optimizer
 from sports_prediction_framework.utils.Evaluation import Metric
-from sports_prediction_framework.utils.Evaluation import evaluate_metrics
 
 # 1. Load and filter data for Bundesliga matches
 func = lambda c: c.Lge == "GER1"

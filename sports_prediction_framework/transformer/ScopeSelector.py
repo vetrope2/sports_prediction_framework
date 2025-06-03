@@ -55,7 +55,9 @@ class EnumSelector(ScopeSelector):
     def transform(self, dataset: DataWrapper) -> DataWrapper:
         data = dataset.get_dataframe()
         trans = data.loc[data[self.scope.col] == self.scope.enum[self.scope.cur_index]]
-        return dataset.deepcopy(trans)
+        copy = dataset.deepcopy(trans)
+        #print(copy)
+        return copy
 
     def __str__(self):
         return self.scope.enum[self.scope.cur_index]
