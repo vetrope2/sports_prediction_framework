@@ -35,6 +35,9 @@ pip install sports-prediction-framework
 ```bash
 python sports_prediction_framework/examples/simulation_example.py
 ```
+## Colab Examples
+[Flat Model](https://colab.research.google.com/drive/1cvTSVJl9IKZ5zetAArQoUHMiGpkao_N1?usp=sharing)
+
 
 
 ## End-to-End Example
