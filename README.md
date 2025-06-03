@@ -36,7 +36,7 @@ pip install sports-prediction-framework
 python sports_prediction_framework/examples/simulation_example.py
 ```
 ## Colab Examples
-The colab examples require a data source. One is provided in the examples directory.
+The colab examples require a data source. One is provided in the examples directory, named **data.parquet**.
 
 [Flat Model](https://colab.research.google.com/drive/1cvTSVJl9IKZ5zetAArQoUHMiGpkao_N1?usp=sharing)
 
