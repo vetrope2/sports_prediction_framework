@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../examples/">
       
       
-        <link rel="next" href="../database_connect/">
+        <link rel="next" href="../loader/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Getting Started - sports_prediction_framework</title>
+        <title>Commented Workflow - sports_prediction_framework</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started" class="md-skip">
+        <a href="#1-load-bundesliga-data-including-bookmaker-odds-bet365" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting Started
+              Commented Workflow
             
           </span>
         </div>
@@ -237,32 +237,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Getting Started
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
         
   
   
@@ -273,44 +251,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-connect-to-a-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Connect to a Database
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-use-the-self-contained-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Use the Self-Contained Examples
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -363,10 +303,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../workflow_comment/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Commented Workflow
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -377,6 +337,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-load-bundesliga-data-including-bookmaker-odds-bet365" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Load Bundesliga Data Including Bookmaker Odds (bet365)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Load Bundesliga Data Including Bookmaker Odds (bet365)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excerpt-of-loaded-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excerpt of loaded data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-apply-basic-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Apply Basic Transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Apply Basic Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-of-transformed-match-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample of Transformed Match Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-define-training-and-prediction-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Define Training and Prediction Scopes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-create-model-and-setup-learner" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Create Model and Setup Learner
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-generate-predictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Generate Predictions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Generate Predictions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -832,8 +900,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -842,20 +908,92 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-connect-to-a-database" class="md-nav__link">
+  <a href="#1-load-bundesliga-data-including-bookmaker-odds-bet365" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Connect to a Database
+      1. Load Bundesliga Data Including Bookmaker Odds (bet365)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Load Bundesliga Data Including Bookmaker Odds (bet365)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#excerpt-of-loaded-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Excerpt of loaded data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-apply-basic-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Apply Basic Transformations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Apply Basic Transformations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-of-transformed-match-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample of Transformed Match Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-define-training-and-prediction-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Define Training and Prediction Scopes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-use-the-self-contained-examples" class="md-nav__link">
+  <a href="#4-create-model-and-setup-learner" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Use the Self-Contained Examples
+      4. Create Model and Setup Learner
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-generate-predictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Generate Predictions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Generate Predictions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Output
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -875,20 +1013,345 @@
 
 
 
-<h1 id="getting-started">Getting Started</h1>
-<p>Welcome to the framework! There are two main ways to get started depending on your setup and needs:</p>
-<h2 id="1-connect-to-a-database">1. Connect to a Database</h2>
-<p>If you want to work with your own or a remote database, make sure to configure your environment by creating a <code>.env</code> file in your current working directory. This file should include your database credentials and, if necessary, SSH tunnel settings.</p>
+  <h1>Commented Workflow</h1>
+
+<h3 id="1-load-bundesliga-data-including-bookmaker-odds-bet365">1. Load Bundesliga Data Including Bookmaker Odds (bet365)</h3>
+<p>In this step, we load Bundesliga match data filtered by league name and including bookmaker odds from "bet365". The data is wrapped for convenient use within the framework.</p>
+<p>This method <strong>shields the user from having to manually connect to a database or parse raw data based on the database format</strong>. It returns a ready-to-use wrapped dataset for downstream tasks.</p>
+<pre><code class="language-python"># Load Bundesliga football match data with bet365 bookmaker odds
+dw = DataLoader.load_and_wrap_odds(
+    &quot;football&quot;,
+    &quot;Matches&quot;,
+    lambda c: c.League == &quot;Bundesliga&quot;,
+    SportType.FOOTBALL,
+    bookmaker=&quot;bet365&quot;
+)
+</code></pre>
 <blockquote>
-<p>See <a href="../database_connect/">Database Configuration</a> for detailed instructions.</p>
+<p><strong>See Also:</strong><br />
+<a href="../reference/dataloader/">DataLoader API Reference</a></p>
 </blockquote>
-<h2 id="2-use-the-self-contained-examples">2. Use the Self-Contained Examples</h2>
-<p>If you prefer a quick start without needing database access, you can explore our self-contained demonstrations. These run in Google Colab and use the sample data provided in the <code>examples</code> directory (<code>data.parquet</code>).</p>
+<h4 id="excerpt-of-loaded-data">Excerpt of loaded data</h4>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Home</th>
+<th>Away</th>
+<th>HS</th>
+<th>AS</th>
+<th>WDL</th>
+<th>odds_1</th>
+<th>odds_X</th>
+<th>odds_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2004-01-21</td>
+<td>Bayern Munich</td>
+<td>Hamburger SV</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1.39</td>
+<td>4.00</td>
+<td>6.50</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Wolfsburg</td>
+<td>Dortmund</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.83</td>
+<td>3.25</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.10</td>
+<td>3.25</td>
+<td>3.00</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.00</td>
+<td>—</td>
+<td>3.25</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Mainz</td>
+<td>Stuttgart</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2.79</td>
+<td>3.25</td>
+<td>2.20</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-apply-basic-transformations">2. Apply Basic Transformations</h3>
+<p>In this step, we apply standard preprocessing transformations to the wrapped data using the framework’s <code>Transformer</code> class.</p>
+<p>This step ensures that the raw data is cleaned and standardized for modeling. Transformations may include parsing dates, encoding categorical variables, or formatting numerical features.</p>
+<pre><code class="language-python">from sports_prediction_framework.transformer.Transformer import *
+#Applies basic transformations to the dataframe.
+t = Transformer()
+dw = t.transform(dw)
+print(dw)
+</code></pre>
+<p>By default, this transformation adds unique numeric identifiers for each team (Team ID columns), which are often used in embedding-based models.</p>
+<h4 id="sample-of-transformed-match-data">Sample of Transformed Match Data</h4>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Home</th>
+<th>Away</th>
+<th>HID</th>
+<th>AID</th>
+<th>HS</th>
+<th>AS</th>
+<th>WDL</th>
+<th>odds_1</th>
+<th>odds_X</th>
+<th>odds_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2004-01-21</td>
+<td>Bayern Munich</td>
+<td>Hamburger SV</td>
+<td>5</td>
+<td>17</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1.39</td>
+<td>4.00</td>
+<td>6.50</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Wolfsburg</td>
+<td>Dortmund</td>
+<td>35</td>
+<td>9</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.83</td>
+<td>3.25</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>27</td>
+<td>24</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.10</td>
+<td>3.25</td>
+<td>3.00</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>27</td>
+<td>24</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.00</td>
+<td>—</td>
+<td>3.25</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Mainz</td>
+<td>Stuttgart</td>
+<td>26</td>
+<td>32</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2.79</td>
+<td>3.25</td>
+<td>2.20</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>Check out the <a href="../examples/">Examples and Demos</a> page to open the notebooks directly.</p>
+<p><em>Note: This is only a small sample of the available data. The full dataset contains additional rows and possibly other columns. Missing values are represented as em dashes (—).</em></p>
 </blockquote>
-<hr />
-<p>Feel free to choose the option that best fits your workflow. If you’re new, we recommend starting with the examples for a smooth introduction!</p>
+<h3 id="3-define-training-and-prediction-scopes">3. Define Training and Prediction Scopes</h3>
+<p>Before training, we define the scopes that determine which parts of the data will be used for training (relevant scope) and prediction (prediction scope). </p>
+<p>In this example, both scopes are created using <code>WindowSelector</code> combined with <code>ScopeExpander</code>, which slices the data by the 'Season' column, selecting windows starting from 2004 up to 2008 with a size of 1 season and a stride of 2 seasons.</p>
+<p>The <code>DataSelector</code> then combines these scopes, managing the data segmentation for iterative training and testing.</p>
+<pre><code class="language-python">from sports_prediction_framework.transformer.Scope import *
+from sports_prediction_framework.transformer.DataSelector import *
+
+relevant_scope = [WindowSelector(ScopeExpander(dw, {
+    'col': 'Season', 'start': 2004, 'max': 2008, 'size': 1, 'stride': 2
+}))]
+prediction_scope = [WindowSelector(ScopeExpander(dw, {
+    'col': 'Season', 'start': 2004, 'max': 2008, 'size': 1, 'stride': 2
+}))]
+scope = DataSelector(relevant_scope, prediction_scope)
+</code></pre>
+<blockquote>
+<p><strong>See Also:</strong><br />
+<a href="../reference/scope/">Scope API Reference</a>
+</p>
+</blockquote>
+<h3 id="4-create-model-and-setup-learner">4. Create Model and Setup Learner</h3>
+<p>Next, we instantiate a <code>FlatModel</code> with chosen parameters and configure a <code>Learner</code> and an <code>UpdatingLearner</code> to manage the training and evaluation process over the defined data scopes.</p>
+<p>The <code>UpdatingLearner</code> supports iterative updates by coordinating one or more nested learners, enabling flexible training workflows.</p>
+<pre><code class="language-python">from sports_prediction_framework.model.FlatModel import FlatModel
+from sports_prediction_framework.learner.Learner import Learner, UpdatingLearner, Tester, Trainer
+
+params = {
+    'embed_dim': 32,
+    'out_dim': 3,
+    'n_dense': 4,
+    'dense_dim': 64,
+    'architecture_type': 'rectangle',
+    'batch_size': 64,
+}
+flat = FlatModel(params)
+
+#Setup learner and updating learner
+l1 = Learner(Trainer(flat), Tester(flat), scope)
+l = UpdatingLearner(Trainer(flat), Tester(flat), scope, [l1])
+</code></pre>
+<h3 id="5-generate-predictions">5. Generate Predictions</h3>
+<p>After training, we use the learner to compute predictions on the dataset. The predicted probabilities for each outcome are stored in columns labeled <code>0</code>, <code>1</code>, and <code>2</code>.</p>
+<p>This allows you to easily access the model’s confidence for each class or outcome.</p>
+<pre><code class="language-python">prob = l.compute(dw)
+#Predictions stored in 0,1,2 columns.
+print(prob)
+</code></pre>
+<h4 id="example-output">Example Output</h4>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Home</th>
+<th>Away</th>
+<th>HID</th>
+<th>AID</th>
+<th>HS</th>
+<th>AS</th>
+<th>WDL</th>
+<th>odds_1</th>
+<th>odds_X</th>
+<th>odds_2</th>
+<th>1</th>
+<th>0</th>
+<th>2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2004-01-21</td>
+<td>Bayern Munich</td>
+<td>Hamburger SV</td>
+<td>5</td>
+<td>17</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1.39</td>
+<td>4.00</td>
+<td>6.50</td>
+<td>0.596798</td>
+<td>0.201601</td>
+<td>0.201601</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Wolfsburg</td>
+<td>Dortmund</td>
+<td>35</td>
+<td>9</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.83</td>
+<td>3.25</td>
+<td>3.75</td>
+<td>0.174244</td>
+<td>0.340452</td>
+<td>0.485304</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>27</td>
+<td>24</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.10</td>
+<td>3.25</td>
+<td>3.00</td>
+<td>0.082314</td>
+<td>0.082314</td>
+<td>0.835371</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>27</td>
+<td>24</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.00</td>
+<td></td>
+<td>3.25</td>
+<td>0.082314</td>
+<td>0.082314</td>
+<td>0.835371</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Mainz</td>
+<td>Stuttgart</td>
+<td>26</td>
+<td>32</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2.79</td>
+<td>3.25</td>
+<td>2.20</td>
+<td>0.031287</td>
+<td>0.031287</td>
+<td>0.937426</td>
+</tr>
+</tbody>
+</table>
 
 
 

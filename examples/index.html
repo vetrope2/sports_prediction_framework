@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../database_connect/">
       
       
-        <link rel="next" href="../database_connect/">
+        <link rel="next" href="../workflow_comment/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Getting Started - sports_prediction_framework</title>
+        <title>Examples - sports_prediction_framework</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started" class="md-skip">
+        <a href="#self-contained-demonstration" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting Started
+              Examples
             
           </span>
         </div>
@@ -237,32 +237,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Getting Started
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
         
   
   
@@ -273,44 +251,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-connect-to-a-database" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Connect to a Database
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-use-the-self-contained-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Use the Self-Contained Examples
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -341,10 +281,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../examples/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -355,6 +317,35 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-dataparquet-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example of data.parquet Content
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -842,18 +833,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-connect-to-a-database" class="md-nav__link">
+  <a href="#example-of-dataparquet-content" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Connect to a Database
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-use-the-self-contained-examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Use the Self-Contained Examples
+      Example of data.parquet Content
     </span>
   </a>
   
@@ -875,20 +857,104 @@
 
 
 
-<h1 id="getting-started">Getting Started</h1>
-<p>Welcome to the framework! There are two main ways to get started depending on your setup and needs:</p>
-<h2 id="1-connect-to-a-database">1. Connect to a Database</h2>
-<p>If you want to work with your own or a remote database, make sure to configure your environment by creating a <code>.env</code> file in your current working directory. This file should include your database credentials and, if necessary, SSH tunnel settings.</p>
+<h1 id="self-contained-demonstration">Self-Contained Demonstration</h1>
+<p>We provide a self-contained demonstration that does <strong>not</strong> require any database access. This makes it easy to explore and test the framework without setting up a database connection.</p>
+<p>The demonstration runs in <strong>Google Colab</strong> and uses the <code>data.parquet</code> file located in the <code>examples</code> directory of the repository.</p>
+<p>You can open and run the notebooks directly via the following links:</p>
+<ul>
+<li>
+<p><a href="https://colab.research.google.com/drive/1cvTSVJl9IKZ5zetAArQoUHMiGpkao_N1?usp=sharing">Flat Model</a></p>
+</li>
+<li>
+<p><a href="https://colab.research.google.com/drive/1s_RPveoUixcFV2rnhW3lM3VRf8ynknlg?usp=sharing">Other Flat</a></p>
+</li>
+<li>
+<p><a href="https://colab.research.google.com/drive/1h-C7imynYpMc1OvjwBnfxgcU2mvczJsb?usp=sharing">Model Evaluation</a></p>
+</li>
+<li>
+<p><a href="https://colab.research.google.com/drive/1PDxtwabuDKNq8BPbRyAJmk8nsWcuTvUy?usp=sharing">Optimization</a></p>
+</li>
+<li>
+<p><a href="https://colab.research.google.com/drive/18KNe19nwtR_dQaZLlF6deUjtP77b12B9?usp=sharing">Simulation example</a></p>
+</li>
+</ul>
+<p>Feel free to explore these notebooks to get a hands-on understanding of the framework using real data samples.</p>
+<h3 id="example-of-dataparquet-content">Example of <code>data.parquet</code> Content</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Home</th>
+<th>Away</th>
+<th>HS</th>
+<th>AS</th>
+<th>WDL</th>
+<th>odds_1</th>
+<th>odds_X</th>
+<th>odds_2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2004-01-21</td>
+<td>Bayern Munich</td>
+<td>Hamburger SV</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>1.39</td>
+<td>4.00</td>
+<td>6.50</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Wolfsburg</td>
+<td>Dortmund</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1.83</td>
+<td>3.25</td>
+<td>3.75</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.10</td>
+<td>3.25</td>
+<td>3.00</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Nurnberg</td>
+<td>Kaiserslautern</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2.00</td>
+<td>—</td>
+<td>3.25</td>
+</tr>
+<tr>
+<td>2004-01-22</td>
+<td>Mainz</td>
+<td>Stuttgart</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2.79</td>
+<td>3.25</td>
+<td>2.20</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>See <a href="../database_connect/">Database Configuration</a> for detailed instructions.</p>
+<p><strong>Note:</strong> This is a small excerpt of the <code>data.parquet</code> file. The actual dataset contains many more rows and columns with additional information.</p>
 </blockquote>
-<h2 id="2-use-the-self-contained-examples">2. Use the Self-Contained Examples</h2>
-<p>If you prefer a quick start without needing database access, you can explore our self-contained demonstrations. These run in Google Colab and use the sample data provided in the <code>examples</code> directory (<code>data.parquet</code>).</p>
-<blockquote>
-<p>Check out the <a href="../examples/">Examples and Demos</a> page to open the notebooks directly.</p>
-</blockquote>
-<hr />
-<p>Feel free to choose the option that best fits your workflow. If you’re new, we recommend starting with the examples for a smooth introduction!</p>
 
 
 
