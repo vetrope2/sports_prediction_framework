@@ -36,7 +36,6 @@ class Learner:
             DataWrapper: Copy of the input wrapper with added predictions.
         """
         features = self.train_test(wrapper)
-        print(features)
         if features is None:
             return wrapper
         features = features[~features.index.duplicated(keep='first')]

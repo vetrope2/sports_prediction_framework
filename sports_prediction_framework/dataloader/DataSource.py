@@ -20,7 +20,11 @@ class DataSource:
             via_ssh (bool): If True, establishes the connection through SSH tunneling.
         """
         self.con = Connector()
-        self.db_type = self.con.config['DB_NAME']
+        try:
+            self.db_type = self.con.config['DB_NAME']
+        except KeyError:
+            self.db_type = None
+            print("DB_name not configured properly")
 
         if sport_type is not None:
             self.parser = sport_type.get_parser()()

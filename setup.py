@@ -7,7 +7,7 @@ requirements = Path(__file__).parent.joinpath("requirements.txt").read_text().sp
 
 setup(
     name="sports_prediction_framework",
-    version="0.1.2",
+    version="0.1.3",
     packages=find_packages(),
     install_requires=requirements
 )

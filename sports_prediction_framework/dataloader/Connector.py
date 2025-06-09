@@ -52,7 +52,7 @@ class Connector:
 
             self.connect_to_db()
         except Exception as e:
-            pass
+            print("Unable to connect to database")
 
     def close(self):
         """
