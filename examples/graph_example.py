@@ -19,6 +19,7 @@ except Exception as e:
     print(f"Failed to load parquet file: {e}")
 
 
+#Decreasing the size for faster demo
 df = df.head(200)
 handler = DataHandler(df)
 dw = SportType.FOOTBALL.get_wrapper()(handler)
@@ -41,7 +42,7 @@ scope = DataSelector(relevant_scope, prediction_scope)
 
 # 5. Initialize model and learners
 gnn = GNNModel(graph)
-l = LearnerWithoutScope(Trainer(gnn), Tester(gnn))
+l = UpdatingLearner(Trainer(gnn), Tester(gnn), scope)
 
 # 6. Run prediction and inspect output
 prob = l.compute(dw)

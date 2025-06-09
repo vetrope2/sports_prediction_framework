@@ -10,24 +10,46 @@ This framework enables seamless data ingestion, model training, prediction, and 
 > 👉 Check out the full guide here: [📚 Full Documentation](https://vetrope2.github.io/sports_prediction_framework/)
 
 ## Table of Contents
-
+- [Overview](#overview)
+- [Modules](#modules)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Using Database Data in the Framework](#using-database-data-in-the-framework)
 - [Self-Contained Demonstration](#self-contained-demonstration)
 - [Commented Workflow](#commented-workflow)
+- [Evaluation Metrics](#-evaluation-metrics)
+- [Full Documentation](https://vetrope2.github.io/sports_prediction_framework/)
 
-## Features
 
-- Support for multiple sports (e.g., matches and races)
-- Plug-and-play architecture for custom data parsers, models, and strategies
-- Built-in PyTorch-based models (`FlatModel`, `GNNModel`)
-- MLflow integration for parameter and metric logging
-- Iterative training and testing via customizable scopes
-- Built-in betting strategy simulations (Kelly, Sharpe, Flat)
-- Clean abstractions (`DataWrapper`, `Trainer`, `Learner`, etc.)
-- Easily extendable for new formats, models, and evaluation methods
 
+---
+
+## Overview
+
+This framework provides a comprehensive pipeline for sports prediction, including:
+
+- **Data Loading & Parsing:** Flexible connectors and parsers to ingest and preprocess sports data from multiple sources.
+- **Data Wrappers:** Clean abstractions over raw data for various sports and competitions, supporting feature extraction and label management.
+- **Modeling:** Support for diverse predictive models, including flat and graph neural network architectures.
+- **Training & Evaluation:** Learner, trainer, and tester components streamline the training process and enable robust model evaluation.
+- **Simulation & Betting Strategies:** Implementations of multiple betting simulations to assess strategy performance using historical match data.
+- **Optimization:** Integration with hyperparameter optimization tools to fine-tune model performance.
+- **Data Transformation & Scoping:** Powerful mechanisms to segment and iterate over datasets for temporal or categorical analysis.
+
+---
+
+## Modules
+
+- `dataloader`: Handles data ingestion and parsing.
+- `datawrapper`: Wraps raw data into usable formats per sport.
+- `model`: Contains model definitions and training logic.
+- `learner`: Coordinates training and evaluation.
+- `simulation`: Betting strategies and evaluation methods.
+- `transformer`: Tools for data segmentation and transformation.
+- `optimizer`: Hyperparameter tuning support.
+- `utils`: Utility functions and helpers.
+
+---
 
 ## Installation
 
@@ -255,4 +277,17 @@ print(prob)
 | 2004-01-22 | Nurnberg      | Kaiserslautern| 27  | 24  | 1  | 3  | 2   | 2.00   |        | 3.25   | 0.082314 | 0.082314 | 0.835371 |
 | 2004-01-22 | Mainz         | Stuttgart     | 26  | 32  | 2  | 3  | 2   | 2.79   | 3.25   | 2.20   | 0.031287 | 0.031287 | 0.937426 |
 
+
+## 📈 Evaluation Metrics
+
+The framework supports multiple evaluation metrics to assess the performance of predictive models across different tasks and objectives:
+
+| Metric        | Description                                                                 |
+|---------------|-----------------------------------------------------------------------------|
+| **Accuracy**  | Measures the proportion of correct predictions among all predictions.       |
+| **Precision** | Evaluates the number of true positives out of all predicted positives.      |
+| **Recall**    | Measures the number of true positives out of all actual positives.          |
+| **F1 Score**  | Harmonic mean of Precision and Recall, balancing false positives and false negatives. |
+| **Brier Score** | Quantifies the accuracy of probabilistic predictions (lower is better).    |
+| **RPS**       | Ranked Probability Score — evaluates the quality of multi-class probabilistic forecasts. |
 

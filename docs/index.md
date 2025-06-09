@@ -7,9 +7,9 @@ Welcome to the **Sports Prediction Framework**, a modular and extensible Python 
 ## Getting Started
 
 - [Installation](installation.md)
-- [Quick Start Guide](quickstart.md)
-- [Core Concepts](core_concepts.md)
+- [Quick Start Guide](usage.md)
 - [Examples](examples.md)
+- [Commented Workflow](workflow_comment.md)
 
 
 ---

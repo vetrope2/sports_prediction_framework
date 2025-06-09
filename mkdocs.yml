@@ -18,6 +18,11 @@ nav:
   - Commented Workflow: workflow_comment.md
   - Data Loading: loader.md
   - Data Handling: wrapper.md
+  - Iterative Training - Scope: scope.md
+  - Base Model: base_model.md
+  - Training: training.md
+  - Optimizer: optimizer.md
+  - Simulation: simulation.md
   - API Reference:
     - dataloader: reference/dataloader.md
     - datawrapper:
@@ -26,7 +31,12 @@ nav:
     - transformer:
       - transformations: reference/transformations.md
       - scope: reference/scope.md
+      - data_selector: reference/data_selector.md
     - learner: reference/learner.md
+    - model:
+      - Base model: reference/base_model.md
+      - Neural model: reference/neural_model.md
+      - Torch model: reference/torch_model.md
     - optimizer: reference/optimizer.md
     - simulation:
        - Base class: reference/simulation.md
