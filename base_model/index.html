@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../loader/">
+        <link rel="prev" href="../scope/">
       
       
-        <link rel="next" href="../scope/">
+        <link rel="next" href="../training/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Data Handling - sports_prediction_framework</title>
+        <title>Base Model - sports_prediction_framework</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datawrapper-module" class="md-skip">
+        <a href="#model-class" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Handling
+              Base Model
             
           </span>
         </div>
@@ -347,32 +347,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Data Handling
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../wrapper/" class="md-nav__link">
         
   
   
@@ -383,83 +361,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Core Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#datahandler" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataHandler
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#datawrapper" class="md-nav__link">
-    <span class="md-ellipsis">
-      DataWrapper
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#specialized-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Specialized Wrappers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Specialized Wrappers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#combining-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Combining Wrappers
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -490,10 +391,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../base_model/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Base Model
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -504,6 +425,57 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#model-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Class
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Class">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1119,8 +1091,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1129,52 +1099,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#model-class" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Components
+      Model Class
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Core Components">
+    <nav class="md-nav" aria-label="Model Class">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#datahandler" class="md-nav__link">
+  <a href="#methods" class="md-nav__link">
     <span class="md-ellipsis">
-      DataHandler
+      Methods
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#datawrapper" class="md-nav__link">
+  <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
-      DataWrapper
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#specialized-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Specialized Wrappers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Specialized Wrappers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#combining-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Combining Wrappers
+      Summary
     </span>
   </a>
   
@@ -1201,63 +1147,35 @@
 
 
 
-<h1 id="datawrapper-module">DataWrapper Module</h1>
-<p>The <strong>DataWrapper</strong> module provides a unified and extensible interface for handling sports data within the framework. It abstracts the complexity of working with heterogeneous datasets by standardizing access to core elements such as features, labels, and predictions—essential components in machine learning workflows.</p>
-<h2 id="core-components">Core Components</h2>
-<p>The module revolves around two primary classes:</p>
-<h3 id="datahandler">DataHandler</h3>
-<ul>
-<li>Acts as the foundational data container.</li>
-<li>Stores raw sports data in a <code>pandas.DataFrame</code>.</li>
-<li>Manages explicit collections of feature columns, label columns, and prediction columns.</li>
-<li>Supports operations like merging new features or labels, extracting specific data subsets, and creating copies for safe data manipulation.</li>
-</ul>
-<h3 id="datawrapper">DataWrapper</h3>
-<ul>
-<li>A higher-level interface built on top of <code>DataHandler</code>.</li>
-<li>Provides convenient methods to access the dataframe, features, labels, and predictions.</li>
-<li>Supports adding or updating columns seamlessly.</li>
-<li>Designed to be extended for sport-specific adaptations by subclassing.</li>
-</ul>
-<h2 id="specialized-wrappers">Specialized Wrappers</h2>
-<p>To handle the diverse structures of sports data, the framework includes specialized <code>DataWrapper</code> subclasses tailored to different domains:</p>
+  <h1>Base Model</h1>
+
+<h2 id="model-class"><code>Model</code> Class</h2>
+<p>The <code>Model</code> class defines a standardized interface for all model implementations within the system. It serves as an abstract base, ensuring consistent usage and interchangeability across different modeling approaches.</p>
+<h3 id="methods">Methods</h3>
 <ul>
 <li>
-<p><strong>MatchWrapper</strong><br />
-  Focuses on match-based sports data. It manages columns related to competing teams (<code>Home</code>, <code>Away</code>, <code>HID</code>, <code>AID</code>), scores (<code>HS</code>, <code>AS</code>), and outcomes (<code>WDL</code>). This wrapper offers helper methods to retrieve and update teams involved in the dataset, encapsulating match-specific logic for easier downstream processing.</p>
+<p><strong><code>fit(X, y)</code></strong><br />
+  Trains the model using input features <code>X</code> and target labels <code>y</code>.<br />
+  This method must be implemented by all concrete subclasses.</p>
 </li>
 <li>
-<p><strong>RaceWrapper</strong><br />
-  Designed for individual competitor sports such as racing. It standardizes access to ranking and performance-related data, facilitating feature extraction and modeling for race results.</p>
+<p><strong><code>predict(X)</code></strong><br />
+  Generates predictions from the input features <code>X</code>.<br />
+  Returns output in a consistent format, regardless of the model's internal structure.</p>
 </li>
 <li>
-<p><strong>LeagueWrapper</strong><br />
-  Handles aggregated competition data such as league standings or seasonal summaries. This wrapper is useful for datasets that represent competition contexts broader than individual events.</p>
+<p><strong><code>set_params(params)</code></strong><br />
+  Configures model hyperparameters dynamically using a dictionary <code>params</code>.<br />
+  Enables flexible experimentation without requiring code changes.</p>
+</li>
+<li>
+<p><strong><code>reset_state()</code></strong><br />
+  Resets or reinitializes the internal state of the model.<br />
+  Useful for ensuring clean training or evaluation runs.</p>
 </li>
 </ul>
-<h3 id="combining-wrappers">Combining Wrappers</h3>
-<p>Some sports combine multiple data perspectives and therefore require multiple inheritance from these wrappers. For example, the <code>FootballWrapper</code> inherits from both <code>MatchWrapper</code> and <code>LeagueWrapper</code> to provide comprehensive support for both match-level and league-level data semantics.</p>
-<hr />
-<p>This modular design ensures that data handling remains consistent across different sports, while still being flexible enough to accommodate the unique aspects of each sport’s data structure.</p>
-<hr />
-<h1 id="parser-component">Parser Component</h1>
-<p>The <strong>Parser</strong> module is responsible for converting raw data from external or internal databases into a standardized internal format that the framework can use for modeling and analysis. This step is crucial when working with heterogeneous data sources, each with its own naming conventions, formats, and quirks.</p>
-<p>Parsing is automatically triggered during data loading when data is wrapped into a <code>DataWrapper</code>, ensuring all data entering the pipeline follows a consistent schema.</p>
-<h2 id="parser-architecture">Parser Architecture</h2>
-<p>All parser implementations inherit from a common base class, <code>AbstractParser</code>, which defines the standard interface and expected behavior.</p>
-<h3 id="current-implementations">Current Implementations</h3>
-<ul>
-<li>Filtering out rows with invalid or placeholder results.</li>
-<li>Extracting home and away team goals from raw result strings.</li>
-<li>Normalizing season representations (e.g., <code>"2020/2021"</code>) into a consistent numeric format.</li>
-<li>Mapping categorical match outcomes (<code>"W"</code>, <code>"D"</code>, <code>"L"</code>) to numeric labels (<code>1</code>, <code>0</code>, <code>2</code>) suitable for classification.</li>
-<li>Renaming inconsistent column names to standardized schema (e.g., <code>"HT"</code> → <code>"Home"</code>).</li>
-<li>Ensuring proper data types for key columns to maintain downstream compatibility.</li>
-</ul>
-<h2 id="data-source-specific-parsing">Data Source Specific Parsing</h2>
-<p>The parser implementations include custom methods for different data sources, since each source may have unique formats or conventions. This modular design allows easy extension to new data sources without affecting existing parsers.</p>
-<h2 id="summary">Summary</h2>
-<p>The Parser component abstracts the complexity of raw data heterogeneity, providing a clean and reliable interface to the rest of the framework. By standardizing input data, it enables consistent and accurate downstream processing and model training.</p>
+<h3 id="summary">Summary</h3>
+<p>These methods form the core interface contract for all models in the framework. By adhering to this interface, different model implementations can be easily integrated, compared, and swapped out within the system.</p>
 
 
 

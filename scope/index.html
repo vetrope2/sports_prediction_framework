@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../loader/">
+        <link rel="prev" href="../wrapper/">
       
       
-        <link rel="next" href="../scope/">
+        <link rel="next" href="../base_model/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Data Handling - sports_prediction_framework</title>
+        <title>Iterative Training - Scope - sports_prediction_framework</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#datawrapper-module" class="md-skip">
+        <a href="#iterative-training-with-scope" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Handling
+              Iterative Training - Scope
             
           </span>
         </div>
@@ -347,6 +347,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../wrapper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -356,15 +378,13 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   
   <span class="md-ellipsis">
-    Data Handling
+    Iterative Training - Scope
     
   </span>
   
@@ -377,7 +397,7 @@
   
   
   <span class="md-ellipsis">
-    Data Handling
+    Iterative Training - Scope
     
   </span>
   
@@ -390,8 +410,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -400,30 +418,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#iterative-training-with-scope" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Components
+      Iterative Training with Scope
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Core Components">
+    <nav class="md-nav" aria-label="Iterative Training with Scope">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#datahandler" class="md-nav__link">
+  <a href="#scope-the-core-iterator" class="md-nav__link">
     <span class="md-ellipsis">
-      DataHandler
+      Scope: The Core Iterator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope: The Core Iterator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windowscope" class="md-nav__link">
+    <span class="md-ellipsis">
+      WindowScope
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#datawrapper" class="md-nav__link">
+  <a href="#enumscope" class="md-nav__link">
     <span class="md-ellipsis">
-      DataWrapper
+      EnumScope
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -433,26 +466,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specialized-wrappers" class="md-nav__link">
+  <a href="#scopeselector-bridging-scope-and-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Specialized Wrappers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Specialized Wrappers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#combining-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Combining Wrappers
+      ScopeSelector: Bridging Scope and Data
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#dataselector-orchestrating-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataSelector: Orchestrating Iteration
+    </span>
+  </a>
   
 </li>
       
@@ -460,28 +487,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../scope/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Iterative Training - Scope
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1119,8 +1124,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1129,30 +1132,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#iterative-training-with-scope" class="md-nav__link">
     <span class="md-ellipsis">
-      Core Components
+      Iterative Training with Scope
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Core Components">
+    <nav class="md-nav" aria-label="Iterative Training with Scope">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#datahandler" class="md-nav__link">
+  <a href="#scope-the-core-iterator" class="md-nav__link">
     <span class="md-ellipsis">
-      DataHandler
+      Scope: The Core Iterator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scope: The Core Iterator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windowscope" class="md-nav__link">
+    <span class="md-ellipsis">
+      WindowScope
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#datawrapper" class="md-nav__link">
+  <a href="#enumscope" class="md-nav__link">
     <span class="md-ellipsis">
-      DataWrapper
+      EnumScope
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1162,26 +1180,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#specialized-wrappers" class="md-nav__link">
+  <a href="#scopeselector-bridging-scope-and-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Specialized Wrappers
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Specialized Wrappers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#combining-wrappers" class="md-nav__link">
-    <span class="md-ellipsis">
-      Combining Wrappers
+      ScopeSelector: Bridging Scope and Data
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#dataselector-orchestrating-iteration" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataSelector: Orchestrating Iteration
+    </span>
+  </a>
   
 </li>
       
@@ -1201,63 +1213,53 @@
 
 
 
-<h1 id="datawrapper-module">DataWrapper Module</h1>
-<p>The <strong>DataWrapper</strong> module provides a unified and extensible interface for handling sports data within the framework. It abstracts the complexity of working with heterogeneous datasets by standardizing access to core elements such as features, labels, and predictions—essential components in machine learning workflows.</p>
-<h2 id="core-components">Core Components</h2>
-<p>The module revolves around two primary classes:</p>
-<h3 id="datahandler">DataHandler</h3>
+  <h1>Iterative Training - Scope</h1>
+
+<h2 id="iterative-training-with-scope">Iterative Training with Scope</h2>
+<p>To support flexible and systematic model training, the framework introduces the concept of a <strong>Scope</strong> — a generalized abstraction for iterating over segments of a dataset. This makes it easy to implement strategies like rolling windows, expanding horizons, or category-based splits for training and evaluation.</p>
+<h3 id="scope-the-core-iterator">Scope: The Core Iterator</h3>
+<p>At its core, the <code>Scope</code> class defines a consistent interface for stepping through data partitions. It exposes key methods such as:</p>
 <ul>
-<li>Acts as the foundational data container.</li>
-<li>Stores raw sports data in a <code>pandas.DataFrame</code>.</li>
-<li>Manages explicit collections of feature columns, label columns, and prediction columns.</li>
-<li>Supports operations like merging new features or labels, extracting specific data subsets, and creating copies for safe data manipulation.</li>
+<li><code>shift()</code>: Advance the scope to the next data segment.</li>
+<li><code>inside()</code>: Check whether iteration can continue.</li>
+<li><code>reset_state()</code>: Return the scope to its initial state.</li>
+<li><code>current_state()</code>: Return the current position or window definition.</li>
 </ul>
-<h3 id="datawrapper">DataWrapper</h3>
+<p>Several concrete implementations of <code>Scope</code> are available:</p>
+<h4 id="windowscope">WindowScope</h4>
+<p>A base class for time-based iteration. It operates on a numeric or temporal column and is controlled by three parameters:
+- <code>start</code>: Where to begin.
+- <code>size</code>: Length of the window.
+- <code>stride</code>: Step size between iterations.</p>
+<p>Derived classes include:</p>
 <ul>
-<li>A higher-level interface built on top of <code>DataHandler</code>.</li>
-<li>Provides convenient methods to access the dataframe, features, labels, and predictions.</li>
-<li>Supports adding or updating columns seamlessly.</li>
-<li>Designed to be extended for sport-specific adaptations by subclassing.</li>
+<li><code>ScopeRoller</code>: Uses a fixed-size window and moves it forward by <code>stride</code> on each iteration. This is similar to a rolling window approach.</li>
+<li><code>ScopeExpander</code>: Starts with a fixed point and increases the window size with each iteration. Useful for walk-forward validation.</li>
 </ul>
-<h2 id="specialized-wrappers">Specialized Wrappers</h2>
-<p>To handle the diverse structures of sports data, the framework includes specialized <code>DataWrapper</code> subclasses tailored to different domains:</p>
-<ul>
-<li>
-<p><strong>MatchWrapper</strong><br />
-  Focuses on match-based sports data. It manages columns related to competing teams (<code>Home</code>, <code>Away</code>, <code>HID</code>, <code>AID</code>), scores (<code>HS</code>, <code>AS</code>), and outcomes (<code>WDL</code>). This wrapper offers helper methods to retrieve and update teams involved in the dataset, encapsulating match-specific logic for easier downstream processing.</p>
-</li>
-<li>
-<p><strong>RaceWrapper</strong><br />
-  Designed for individual competitor sports such as racing. It standardizes access to ranking and performance-related data, facilitating feature extraction and modeling for race results.</p>
-</li>
-<li>
-<p><strong>LeagueWrapper</strong><br />
-  Handles aggregated competition data such as league standings or seasonal summaries. This wrapper is useful for datasets that represent competition contexts broader than individual events.</p>
-</li>
-</ul>
-<h3 id="combining-wrappers">Combining Wrappers</h3>
-<p>Some sports combine multiple data perspectives and therefore require multiple inheritance from these wrappers. For example, the <code>FootballWrapper</code> inherits from both <code>MatchWrapper</code> and <code>LeagueWrapper</code> to provide comprehensive support for both match-level and league-level data semantics.</p>
+<h4 id="enumscope">EnumScope</h4>
+<p>Used for iterating over categorical values (e.g., leagues or countries). It loops through unique entries in a specified column, enabling segmented evaluation for each category.</p>
 <hr />
-<p>This modular design ensures that data handling remains consistent across different sports, while still being flexible enough to accommodate the unique aspects of each sport’s data structure.</p>
+<h2 id="scopeselector-bridging-scope-and-data">ScopeSelector: Bridging Scope and Data</h2>
+<p>While <code>Scope</code> defines <em>how</em> iteration happens, it doesn’t know anything about the dataset itself. That’s where <code>ScopeSelector</code> comes in.</p>
+<p>A <code>ScopeSelector</code> pairs a <code>Scope</code> with a <code>DataWrapper</code> and provides the <code>transform()</code> method, which applies the current scope state to the dataset. This enables dynamic slicing of data during iterative training or evaluation.</p>
+<p>Different selectors specialize in different types of filtering:
+- <code>WindowSelector</code>: Filters rows within a numeric or temporal range.
+- <code>EnumSelector</code>: Filters by specific category values.</p>
+<p>This design separates <em>when</em> the data changes (<code>Scope</code>) from <em>how</em> it’s extracted (<code>ScopeSelector</code>), improving modularity and making it easier to extend or compose new strategies.</p>
 <hr />
-<h1 id="parser-component">Parser Component</h1>
-<p>The <strong>Parser</strong> module is responsible for converting raw data from external or internal databases into a standardized internal format that the framework can use for modeling and analysis. This step is crucial when working with heterogeneous data sources, each with its own naming conventions, formats, and quirks.</p>
-<p>Parsing is automatically triggered during data loading when data is wrapped into a <code>DataWrapper</code>, ensuring all data entering the pipeline follows a consistent schema.</p>
-<h2 id="parser-architecture">Parser Architecture</h2>
-<p>All parser implementations inherit from a common base class, <code>AbstractParser</code>, which defines the standard interface and expected behavior.</p>
-<h3 id="current-implementations">Current Implementations</h3>
-<ul>
-<li>Filtering out rows with invalid or placeholder results.</li>
-<li>Extracting home and away team goals from raw result strings.</li>
-<li>Normalizing season representations (e.g., <code>"2020/2021"</code>) into a consistent numeric format.</li>
-<li>Mapping categorical match outcomes (<code>"W"</code>, <code>"D"</code>, <code>"L"</code>) to numeric labels (<code>1</code>, <code>0</code>, <code>2</code>) suitable for classification.</li>
-<li>Renaming inconsistent column names to standardized schema (e.g., <code>"HT"</code> → <code>"Home"</code>).</li>
-<li>Ensuring proper data types for key columns to maintain downstream compatibility.</li>
-</ul>
-<h2 id="data-source-specific-parsing">Data Source Specific Parsing</h2>
-<p>The parser implementations include custom methods for different data sources, since each source may have unique formats or conventions. This modular design allows easy extension to new data sources without affecting existing parsers.</p>
-<h2 id="summary">Summary</h2>
-<p>The Parser component abstracts the complexity of raw data heterogeneity, providing a clean and reliable interface to the rest of the framework. By standardizing input data, it enables consistent and accurate downstream processing and model training.</p>
+<h2 id="dataselector-orchestrating-iteration">DataSelector: Orchestrating Iteration</h2>
+<p>The <code>DataSelector</code> class coordinates multiple <code>ScopeSelector</code> instances—both for training and testing—and ensures smooth iteration over all valid combinations of data splits.</p>
+<p>It supports:
+- Recursive iteration with backtracking to explore complex scope setups.
+- Mixed scope types (e.g., rolling training window with category-based testing).
+- Validation of each scope configuration via <code>holds()</code> before proceeding.</p>
+<p>During each step, <code>DataSelector</code>:</p>
+<ol>
+<li>Calls <code>transform()</code> on all selectors to extract the current data subset.</li>
+<li>Validates the configuration.</li>
+<li>Advances or backtracks based on the iteration logic.</li>
+</ol>
+<p>This design supports reproducible and structured experiments across multiple training and testing regimes, including nested, time-based, and categorical splits.</p>
 
 
 
