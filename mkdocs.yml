@@ -14,6 +14,8 @@ nav:
   - Installation: installation.md
   - Getting Started: usage.md
   - Database Connection: database_connect.md
+  - Examples: examples.md
+  - Commented Workflow: workflow_comment.md
   - Data Loading: loader.md
   - Data Handling: wrapper.md
   - API Reference:
